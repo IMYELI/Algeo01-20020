@@ -5,6 +5,7 @@ class MainMenu{
         float[][] matrix;
         Scanner sc = new Scanner(System.in);
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
+        int m,n;
         while (!keluar){
             
             System.out.println("MAIN MENU: ");
@@ -24,10 +25,13 @@ class MainMenu{
             }else if(pilMenu == 2){
 
             }else if(pilMenu == 3){
-                
-                bacaMat.setMatSquare(2);
+                System.out.print("Masukan besar matrix m x m: ");
+                m = sc.nextInt();
+                bacaMat.setMatSquare(m);
                 matrix = bacaMat.baca(sc);
-                bacaMat.tulis(matrix);         
+                System.out.println("\nMatrix yang anda input: ");
+                BacaTulisMatrix.tulis(matrix);
+                matrix = inversMatrix.invers(matrix,sc);  
                 
             }else if(pilMenu == 4){
 

@@ -18,6 +18,7 @@ public class BacaTulisMatrix {
         System.out.println("Pilihan input: ");
         System.out.println("1. Keyboard");
         System.out.println("2. file");
+        System.out.print("Pilihan: ");
         int op = readOp.nextInt();
         float[][] matrix = new float[this.m][this.n];
         int i = 0;
@@ -31,6 +32,7 @@ public class BacaTulisMatrix {
                     }
 
             }else if(op == 2){
+                System.out.print("Masukkan path lengkap file: ");
                 String pathFile = readOp.next();
                 File file = new File(pathFile);    
                 Scanner dataReader = new Scanner(file);  
@@ -51,16 +53,42 @@ public class BacaTulisMatrix {
         return matrix; 
     }  
 
-    public void tulis(float[][] matrix){
+    public static void tulis(float[][] matrix){
         int i,j;
-        for(i=0;i<this.m;i++){
-            for(j=0;j<this.n;j++){
+        for(i=0;i<matrix.length;i++){
+            for(j=0;j<matrix[0].length;j++){
                 System.out.print(matrix[i][j] + " ");
-                if(j==this.n-1){
+                if(j==matrix[0].length-1){
                     System.out.println();
                 }
             }
             
         }
+    }
+
+    public static float[][] copy(float[][] matrix){
+        float[][] matrix2 = new float[matrix.length][matrix[0].length];
+        int i,j;
+        for(i=0;i<matrix.length;i++){
+            for(j=0;j<matrix[0].length;j++){
+                matrix2[i][j] = matrix[i][j];
+            }
+        }
+        return matrix2;
+    }
+
+    public static float[][] transpose(float[][] matrix){
+        float[][] matrix2 = new float[matrix.length][matrix[0].length];
+        int i = 0;
+        int j = 0;
+        while(i<matrix.length){
+            j = 0;
+            while(j<matrix[0].length){
+                matrix2[i][j] = matrix[j][i];
+                j++;
+            }
+            i++;
+        }
+        return matrix2;
     }
 }  
