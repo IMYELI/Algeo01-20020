@@ -3,6 +3,7 @@ class MainMenu{
     public static void main(String[] args){
         boolean keluar = false;
         float[][] matrix;
+        float hasilDet;
         Scanner sc = new Scanner(System.in);
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
         int m,n;
@@ -23,6 +24,13 @@ class MainMenu{
             if(pilMenu == 1){
                 
             }else if(pilMenu == 2){
+                System.out.print("Masukan besar matrix m x m: ");
+                m = sc.nextInt();
+                bacaMat.setMatSquare(m);
+                matrix = bacaMat.baca(sc);
+                System.out.println("\nMatrix yang anda input: ");
+                BacaTulisMatrix.tulis(matrix);
+                hasilDet = determinanMatrix.determinan(matrix,sc);
 
             }else if(pilMenu == 3){
                 System.out.print("Masukan besar matrix m x m: ");
