@@ -23,5 +23,8 @@ public class test {
         float[][] matrix;
         matrix = BacaRegresi.baca(sc);
         BacaTulisMatrix.tulis(matrix);
+        System.out.println();
+        float[][] mHasil = BacaRegresi.convertKali(matrix);
+        BacaTulisMatrix.tulis(mHasil);
     }
 }
