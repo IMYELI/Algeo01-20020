@@ -1,5 +1,5 @@
 public class SPLwithGauss {
-    public  static boolean isRowManySolution(float[] row) {
+    public static boolean isRowManySolution(float[] row) {
         int col = 0;
         boolean isManySolution = true;
 
@@ -16,14 +16,14 @@ public class SPLwithGauss {
     public static void SPLGauss(float[][] matrix) {
         float[][] matrixHasil;
         int solusi = 1, idx, row, col;
-        boolean isAllNol = true;
+        boolean isAllNol = true, isSquare = true;
 
         matrixHasil = Gauss.gauss(matrix);
         col = matrixHasil[0].length;
         row = matrix.length;
 
         if (row != col - 1) {
-            solusi = 3
+            isSquare = false;
         }
 
         for (idx = 0; idx < col - 1; idx++) {
@@ -33,8 +33,10 @@ public class SPLwithGauss {
         }
         if (isAllNol) {
             solusi = 2;
+        } else if (isSquare) {
+            solusi = 3;
         }
-        //pasti square
+
         if (solusi == 1) {
             float solusiX[] = new float[row];
             int idxUnik, idxHasilUnik;

@@ -13,17 +13,17 @@ public class SPLwithGaussJordan {
         return isManySolution;
     }
 
-    public static void SPLGauss(float[][] matrix) {
+    public static void SPLGaussJordan(float[][] matrix) {
         float[][] matrixHasil;
         int solusi = 1, idx, row, col;
-        boolean isAllNol = true;
+        boolean isAllNol = true, isSquare = true;
 
         matrixHasil = Gauss.jordan(matrix);
         col = matrixHasil[0].length;
         row = matrix.length;
 
         if (row != col - 1) {
-            solusi = 3
+            isSquare = false;
         }
 
         for (idx = 0; idx < col - 1; idx++) {
@@ -33,7 +33,10 @@ public class SPLwithGaussJordan {
         }
         if (isAllNol) {
             solusi = 2;
+        } else if (isSquare) {
+            solusi = 3;
         }
+
         if (solusi == 1) {
             float solusiX[] = new float[col];
 
