@@ -2,6 +2,8 @@ import java.util.Scanner;
 public class test {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
+        
+        /*
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
         float[][] matrix;
         bacaMat.setMat(3,4);
@@ -9,6 +11,12 @@ public class test {
         BacaTulisMatrix.tulis(matrix);
         System.out.println();
         matrix = Gauss.jordan(matrix);
+        BacaTulisMatrix.tulis(matrix);*/
+        int n;
+        n = sc.nextInt();
+        float[][] matrix = new float[n][2];
+        matrix = BacaInterpolasi.baca(sc,n);
         BacaTulisMatrix.tulis(matrix);
+        float[] mVar = InterpolasiPolinom.interpolasi(matrix);
     }
 }
