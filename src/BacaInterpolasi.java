@@ -2,7 +2,9 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;  
 import java.io.File;
 public class BacaInterpolasi {
-    public static float[][] baca(Scanner sc,int n){
+    public static float[][] baca(Scanner sc){
+        System.out.print("Masukan banyak titik: ");
+        int n = sc.nextInt();
         System.out.println("Pilihan input: ");
         System.out.println("1. Keyboard");
         System.out.println("2. file");
@@ -74,32 +76,5 @@ public class BacaInterpolasi {
         return k;
     }
 
-    public static float[][] convertKali(float[][] matrix){
-        float[][] mHasil = new float[matrix.length+1][matrix.length];
-        int i,j,k;
-        for(i=0;i<matrix.length+1;i++){
-            for(j=0;j<matrix.length;j++){
-                if(i==0 && j==0){
-                    mHasil[i][j] = matrix[0].length;
-                }else if(i == 0){
-                    mHasil[i][j] = 0;
-                    for(k=0;k<matrix[0].length;k++){
-                        mHasil[i][j] += matrix[j-1][k];
-                    }
-                    
-                }else if(j==0){
-                    mHasil[i][j] = 0;
-                    for(k=0;k<matrix[0].length;k++){
-                        mHasil[i][j] += matrix[i-1][k];
-                    }
-                }else {
-                    mHasil[i][j] = 0;
-                    for(k=0;k<matrix[0].length;k++){
-                        mHasil[i][j] += (matrix[i-1][k]*matrix[j-1][k]);
-                    }
-                }
-            }
-        }
-        return mHasil;
-    }
+    
 }

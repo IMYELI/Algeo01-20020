@@ -95,7 +95,7 @@ public class BacaRegresi {
     }
 
     public static void tulis(float[][] matrix){
-        int i,j;
+        int i;
         boolean negatif;
         for(i=0;i<matrix.length;i++){
             negatif = false;
