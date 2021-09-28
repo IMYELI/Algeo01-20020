@@ -1,6 +1,7 @@
-public class InverswithGaussJordan() {
+public class InverswithGaussJordan {
+
     public static float[][] InversGaussJordan(float[][] matrix) {
-        int pilMenu,i,j,k,m,n,o;
+        int i,j,k,m,n,o;
         float tag;
 
         float[][] id = new float[matrix.length][matrix.length];

@@ -22,7 +22,7 @@ public class inversMatrix{
                 System.out.println("\nMatrix setelah di inverse: ");
                 BacaTulisMatrix.tulis(hasilinversMatrix);
             }else if(pilMenu == 2){
-                hasilinversMatrix = InverswithAdjoin.InversAdjoin(matrix);
+                hasilinversMatrix = InverswithAdjoin.InversAdjoin(matrix, determinan);
                 System.out.println("\nMatrix setelah di inverse: ");
                 BacaTulisMatrix.tulis(hasilinversMatrix);
             }else if(pilMenu == 3){

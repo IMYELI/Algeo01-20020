@@ -1,6 +1,6 @@
 public class InverswithAdjoin {
-    public static float[][] InversAdjoin(float[][] matrix) {
-        int row ,col,rowIn,colIn;
+    public static float[][] InversAdjoin(float[][] matrix, float determinan) {
+        int i, j, row ,col,rowIn,colIn;
         float[][] tmp2 = BacaTulisMatrix.copy(matrix);
         float[][] tmp = new float[matrix.length-1][matrix[0].length-1];
 

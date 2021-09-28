@@ -12,13 +12,13 @@ public class SPLwithInvers {
             int idx = 0;
 
             while (isNol) {
-                if (matrixB[idx][0]) {
+                if (matrixB[idx][0] != 0) {
                     isNol = false;
                 } else {
                     idx++;
                 }
             }
-            float determinan = determinanCramer.detKofaktor(matrix);
+            float determinan = determinanCramer.detKofaktor(matrixA);
             //B matrix nol
             if (isNol) {
                 //Determinan = 0
@@ -26,7 +26,6 @@ public class SPLwithInvers {
                     System.out.println("Solusi tidak trivial, gunakan cara lain.");
 
                 } else {
-                    int idx;
                     System.out.println("Solusinya sebagai berikut : ");
                     for (idx = 0; idx < matrixA[0].length; idx++) {
                         int n = idx + 1;
@@ -48,7 +47,7 @@ public class SPLwithInvers {
                         for (idxCol = 0; idxCol < colHasil; idxCol++) {
                             int temp = 0, idxTempPlus = idxRow;
                             for (idxPlus = 0; idxPlus < matrixA[0].length; idxPlus++) {
-                                temp += matrixA[idxTempPlus,idxPlus]*matrixB[idxPlus,idxTemp];
+                                temp += matrixA[idxTempPlus][idxPlus]*matrixB[idxPlus][idxTemp];
                             }
                             matrixHasil[idxRow][idxCol] = temp;
                             idxTemp++;
