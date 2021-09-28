@@ -39,7 +39,24 @@ public class BacaInterpolasi {
 
         }catch (FileNotFoundException exception) {  
             System.out.println("File tidak ditemukan");  
-        }  
+        } 
+
+        return mHasil;
+    }
+
+    public static float[][] convertInterpol(float[][] matrix){
+        float[][] mHasil = new float[matrix.length][matrix.length+1];
+        int i,j;
+        for(i=0;i<matrix.length;i++){
+            for(j=0;j<matrix.length +1;j++){
+                if(j!=matrix.length){
+                    mHasil[i][j] = matrix[j][0];
+                }else{
+                    mHasil[i][j] = matrix[i][1];
+                }
+                
+            }
+        }
         return mHasil;
     }
 }
