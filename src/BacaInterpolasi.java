@@ -35,6 +35,8 @@ public class BacaInterpolasi {
                     i++;           
                 }
                 dataReader.close(); 
+            }else{
+                System.out.println("Opsi tidak ada.");
             }
 
         }catch (FileNotFoundException exception) {  

@@ -11,12 +11,17 @@ public class test {
         BacaTulisMatrix.tulis(matrix);
         System.out.println();
         matrix = Gauss.jordan(matrix);
-        BacaTulisMatrix.tulis(matrix);*/
-        int n;
-        n = sc.nextInt();
+        BacaTulisMatrix.tulis(matrix);
         float[][] matrix = new float[n][2];
         matrix = BacaInterpolasi.baca(sc,n);
         BacaTulisMatrix.tulis(matrix);
-        float[] mVar = InterpolasiPolinom.interpolasi(matrix);
+        System.out.println();
+        float[][] mHasil = BacaInterpolasi.convertInterpol(matrix);
+        BacaTulisMatrix.tulis(mHasil);
+        int n;
+        n = sc.nextInt();*/
+        float[][] matrix;
+        matrix = BacaRegresi.baca(sc);
+        BacaTulisMatrix.tulis(matrix);
     }
 }
