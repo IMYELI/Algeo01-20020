@@ -49,8 +49,10 @@ public class BacaInterpolasi {
         int i,j;
         for(i=0;i<matrix.length;i++){
             for(j=0;j<matrix.length +1;j++){
-                if(j!=matrix.length){
-                    mHasil[i][j] = matrix[j][0];
+                if(j == 0){
+                    mHasil[i][j] = 1;
+                }else if(j!=matrix.length){    
+                    mHasil[i][j] = pow(matrix[i][0],j);
                 }else{
                     mHasil[i][j] = matrix[i][1];
                 }
@@ -58,5 +60,15 @@ public class BacaInterpolasi {
             }
         }
         return mHasil;
+    }
+
+    public static float pow(float m,int n){
+        int i;
+        float k;
+        k = m;
+        for(i=1;i<n;i++){
+            k = k*m;
+        }
+        return k;
     }
 }
