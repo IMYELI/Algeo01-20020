@@ -1,13 +1,13 @@
 public class Gauss {
 
-    public static float[][] sortRowMatrix (float[][] matrix, row){
+    public static float[][] sortRowMatrix (float[][] matrix, int row){
         int idxRow, idxCol, col = matrix[0].length;
         float[][] copyMatrix = BacaTulisMatrix.copy(matrix);
 
         for (idxRow = row; idxRow < matrix.length; idxRow++) {
             for (idxCol = 0; idxCol < col - idxRow; idxCol++) {
-                idxNotNolSeb = BacaTulisMatrix.idxNot0(matrix, idxRow);
-                idxNotNolSes = BacaTulisMatrix.idxNot0(matrix, idxRow+1);
+                int idxNotNolSeb = BacaTulisMatrix.idxNot0(matrix, idxRow);
+                int idxNotNolSes = BacaTulisMatrix.idxNot0(matrix, idxRow+1);
                 if (idxNotNolSeb > idxNotNolSes) {
                     matrix = BacaTulisMatrix.swapRow(copyMatrix, idxRow);
                 }
