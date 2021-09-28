@@ -4,7 +4,7 @@ public class inversMatrix{
         int pilMenu,i,j,k,m,n,o,row,col,rowIn,colIn;
         float tag;
         boolean kembali = false;
-        float determinan = DeterminanCramer.det(matrix);
+        float determinan = determinanCramer.detKofaktor(matrix);
         float[][] tmp2 = BacaTulisMatrix.copy(matrix);
         float[][] tmp = new float[matrix.length-1][matrix[0].length-1];
         while(!kembali){
@@ -92,9 +92,9 @@ public class inversMatrix{
                         }
                         System.out.println();
                         if((row+col)%2 == 0){
-                            tmp2[row][col] = DeterminanCramer.det(tmp);
+                            tmp2[row][col] = determinanCramer.detKofaktor(tmp);
                         }else{
-                            tmp2[row][col] = DeterminanCramer.det(tmp)*(-1);
+                            tmp2[row][col] = determinanCramer.detKofaktor(tmp)*(-1);
                         }
 
                     }

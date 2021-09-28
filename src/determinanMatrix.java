@@ -93,10 +93,10 @@ public class determinanMatrix {
                             } 
                         }
                         if (i%2==0){
-                            result += temp[0][i]*determinanKofaktor.detKofaktor(temp2);
+                            result += temp[0][i]*determinanCramer.detKofaktor(temp2);
                         }    
                         else if (i%2==1){
-                            result += temp[0][i]*determinanKofaktor.detKofaktor(temp2)*-1;
+                            result += temp[0][i]*determinanCramer.detKofaktor(temp2)*-1;
                         }
                     }
                 }

@@ -91,4 +91,26 @@ public class BacaTulisMatrix {
         }
         return matrix2;
     }
+
+    public static int idxNot0(float[][] matrix,int i){
+        int j;
+        int idx = 0;
+        for(j=0;j<matrix[0].length;j++){
+            if(matrix[i][j] != 0){
+                return idx;
+            }
+            idx++;
+        }
+        return idx;
+    }
+
+    public static float[][] swapRow(float[][] matrix, int i){
+        float[][] copyM = BacaTulisMatrix.copy(matrix);
+        int j;
+        for(j=0;j<matrix[0].length;j++){
+            matrix[i][j] = copyM[i+1][j];
+            matrix[i+1][j] = copyM[i][j];
+        }
+        return matrix;
+    }
 }  

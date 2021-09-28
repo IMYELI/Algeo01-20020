@@ -1,4 +1,4 @@
-public class determinanKofaktor {
+public class determinanCramer {
     public static float detKofaktor(float matrix[][]){
         int i,j,k,m,n;
         float temp[][] = new float [matrix.length-1][matrix.length-1];
@@ -37,13 +37,5 @@ public class determinanKofaktor {
             }
         }
         return result;
-    }
-       
-
-    public static void main(String[] args) {
-        float matrix2[][] = {{4,2},{2,4}};
-        float result;
-        result = detKofaktor(matrix2);
-        System.out.print(result);
     }
 }
