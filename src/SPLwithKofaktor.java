@@ -1,16 +1,18 @@
 public class SPLwithKofaktor {
 
-    public static float[][] changeCol(float[][] matrixA, float[] matrixB, int col) {
+    public static float[][] changeCol(float[][] matrixA, float[][] matrixB, int col) {
         int row = matrixA.length, idxRow;
 
         for (idxRow = 0; idxRow < row; idxRow++) {
-            matrixA[idxRow][col] = matrixB[idxRow];
+            matrixA[idxRow][col] = matrixB[idxRow][0];
         }
         return matrixA;
     }
 
-    public static void SPLKofaktor(float[][] matrixA, float[] matrixB) {
+    public static void SPLKofaktor(float[][] matrix) {
         boolean isSquare = true;
+        int newRow = matrix.length, newCol = matrix[0].length;
+        float[][] matrixA = new float[newRow][newCol-1]; float[][] matrixB = new float[newRow][1];
         int row = matrixA.length, col = matrixA[0].length;
         float[][] temp = new float[row -1][col -1];
         float determinan;

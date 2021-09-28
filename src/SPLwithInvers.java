@@ -1,6 +1,8 @@
 public class SPLwithInvers {
-    public static void SPLInvers(float[][] matrixA, float[][] matrixB) {
+    public static void SPLInvers(float[][] matrix) {
         boolean isSquare = true;
+        int newRow = matrix.length, newCol = matrix[0].length;
+        float[][] matrixA = new float[newRow][newCol-1]; float[][] matrixB = new float[newRow][1];
         int row = matrixA.length, col = matrixA[0].length;
 
         if (row != col) {

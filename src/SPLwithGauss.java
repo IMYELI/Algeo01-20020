@@ -13,7 +13,7 @@ public class SPLwithGauss {
         return isManySolution;
     }
 
-    public static float[][] SPLGauss(float[][] matrix) {
+    public static void SPLGauss(float[][] matrix) {
         float[][] matrixHasil;
         int solusi = 1, idx, row, col;
         boolean isAllNol = true, isSquare = true;
@@ -56,30 +56,55 @@ public class SPLwithGauss {
 
         } else if (solusi == 2) {
             System.out.println("Tidak ada Solusi");
-
-        } /* else if (solusi = 3) {
-            int lengthMany = 0, idxBanyak, rowBanyak, colBanyak;
-            char solusiBanyak[] = new char[col];
-            char solBanyak = 's';
-
-            for (idxBanyak = row - 1; idxBanyak >= -; idxBanyak--) {
-                if (isRowManySolution(matrixHasil[idxBanyak]) {
-                    int idxSol;
-                    for (idxSol = idxBanyak + 1; idxSol < col; idxSol++) {
-                        solusiBanyak[idxBanyak] -= matrixHasil[idxBanyak][idxSol] * solusiX[idxSol];
+        }  else if (solusi == 3) {
+            float[] solusiX = new float[col];
+            int idxRow, idxCol;
+            
+            for (idxRow = 0; idxRow < row; idxRow++) {
+                int firstNol = BacaTulisMatrix.idxNot0(matrixHasil, idxRow);
+                for (idxCol = firstNol; idxCol < col; idxCol++) {
+                    System.out.format("x%i =", idxCol);
+                    int idxCek = 0;
+                    boolean isHasValue = false;
+                    while (!isHasValue) {
+                        if (matrixHasil[idxRow][idxCol] == solusiX[idxCek]) {
+                            isHasValue = true;
+                        } else {
+                            idxCek++;
+                        }
                     }
-            }
-
-
-
-
-            for (rowBanyak = 0; rowBanyak < row; rowBanyak++) {
-                for (colBanyak = 0; colBanyak < col; colBanyak) {
-
+                    if (matrixHasil[idxRow][idxCol] != 0 && idxCol < col - 1 && !isHasValue && idxCol != firstNol) {
+                        if (matrixHasil[idxRow][idxCol] > 0) {
+                            if (idxCol != firstNol+1 && idxCol != col-1) {
+                                System.out.printf(" - ");
+                            }
+                            System.out.format(" &.2fx%i ", matrixHasil[idxRow][idxCol], idxCol);
+                        } else {
+                            if (idxCol != firstNol+1 && idxCol != col-1) {
+                                System.out.printf(" + ");
+                            }
+                            System.out.format(" &.2fx%i ", matrixHasil[idxRow][idxCol], idxCol);
+                        }      
+                    } else if (matrixHasil[idxRow][idxCol] != 0 && idxCol == (col - 1) && !isHasValue && idxCol != firstNol) {
+                        if  (matrixHasil[idxRow][idxCol] > 0) {   
+                            System.out.printf(" - ");
+                            System.out.format(" &.2fx%i ", matrixHasil[idxRow][idxCol], idxCol);
+                            
+                        } else {
+                            System.out.printf(" + ");
+                            System.out.format(" &.2fx%i ", matrixHasil[idxRow][idxCol], idxCol);                       
+                        }
+                    } else if (matrixHasil[idxRow][idxCol] != 0 && !isHasValue && idxCol != firstNol && idxRow == (row -1)) {
+                        System.out.format(" x%i ", idxCol);
+                    } else if (isHasValue) {
+                        System.out.format(" %.2f ", matrixHasil[idxRow][idxCol]);
+                    }
+                    System.out.println();        
                 }
-            }
 
-        } */
-        return matrix;
+            }
+    
+        }
+
     }
-}
+}    
