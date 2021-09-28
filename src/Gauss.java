@@ -37,8 +37,11 @@ public class Gauss {
             for(i=k;i>0;i--){
                 tag = copyM[i-1][k];            //Pengali untuk setiap baris
                 for(o=k;o<copyM[0].length;o++){
-                    copyM[i-1][o] = copyM[i-1][o] - (copyM[k][o]*tag);      //Pengurangan dengan baris paling bawah yang bernilai 1
+                    if(copyM[k][k] != 0){       //Mencegah pengurangan baris yang depannya sudah 0
+                        copyM[i-1][o] = copyM[i-1][o] - (copyM[k][o]*tag);      //Pengurangan dengan baris paling bawah yang bernilai 1
                     //System.out.printf("(%d,%d,%d)\n",i,o,k);
+                    }
+                    
                 }
             }
             k--;
