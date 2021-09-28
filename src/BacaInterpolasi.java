@@ -8,13 +8,15 @@ public class BacaInterpolasi {
         System.out.println("2. file");
         System.out.print("Pilihan: ");
         int op = sc.nextInt();
+        sc.nextLine();
         float[][] mHasil = new float[n][2];
-        int i,j;
+        int i;
         try{
             if(op == 1){
                 for(i=0;i<n;i++){
                     String titik = sc.nextLine();
-                    String[] rowTitik = titik.split("(,)");
+                    titik = titik.substring(1,titik.length()-1);
+                    String[] rowTitik = titik.split(",");
                     mHasil[i][0] = Float.parseFloat(rowTitik[0]);
                     mHasil[i][1] = Float.parseFloat(rowTitik[1]);
                 }
@@ -24,13 +26,13 @@ public class BacaInterpolasi {
                 String pathFile = sc.next();
                 File file = new File(pathFile);    
                 Scanner dataReader = new Scanner(file);  
+                i = 0;
                 while (dataReader.hasNextLine()) {  
-                    String lineData = dataReader.nextLine(); //Mengambil tiap line dalam file
-                    String[] rowMatrix = lineData.split(" ",0);
-                    for(i = 0;i<n;i++){
-                        mHasil[i][0] = Float.parseFloat(rowMatrix[0]);
-                        mHasil[i][1] = Float.parseFloat(rowMatrix[1]);
-                    }               
+                    String lineData = dataReader.nextLine(); //Mengambil tiap line dalam 
+                    String[] rowMatrix = lineData.split(" ");
+                    mHasil[i][0] = Float.parseFloat(rowMatrix[0]);
+                    mHasil[i][1] = Float.parseFloat(rowMatrix[1]);
+                    i++;           
                 }
                 dataReader.close(); 
             }
