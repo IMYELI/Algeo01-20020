@@ -40,12 +40,12 @@ public class SPLwithInvers {
                     System.out.println("Solusi tidak tunggal unik, gunakan cara lain.");
 
                 } else {
-                    int row = matrixA[0].length, col = matrixB.length, idxRow, idxCol, idxPlus;
-                    float[][] matrixHasil = new float[row - 1][col - 1];
+                    int rowHasil = matrixA[0].length, colHasil = matrixB.length, idxRow, idxCol, idxPlus;
+                    float[][] matrixHasil = new float[rowHasil - 1][colHasil - 1];
 
-                    for (idxRow = 0; idxRow < row; idxRow++) {
+                    for (idxRow = 0; idxRow < rowHasil; idxRow++) {
                         int idxTemp = 0;
-                        for (idxCol = 0; idxCol < col; idxCol++) {
+                        for (idxCol = 0; idxCol < colHasil; idxCol++) {
                             int temp = 0, idxTempPlus = idxRow;
                             for (idxPlus = 0; idxPlus < matrixA[0].length; idxPlus++) {
                                 temp += matrixA[idxTempPlus,idxPlus]*matrixB[idxPlus,idxTemp];
@@ -55,8 +55,8 @@ public class SPLwithInvers {
                         }
                     }
                     System.out.println("Solusinya sebagai berikut : ");
-                    for (idxRow = 0; idxRow < row; idxRow++) {
-                        for (idxCol = 0; idxCol < col; idxCol++) {
+                    for (idxRow = 0; idxRow < rowHasil; idxRow++) {
+                        for (idxCol = 0; idxCol < colHasil; idxCol++) {
                             System.out.format("X%i = %.2f %n", idxRow, matrixHasil[idxRow][idxCol]);
                         }
                     }

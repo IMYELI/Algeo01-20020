@@ -10,9 +10,10 @@ public class SPLwithKofaktor {
 
         if (isSquare) {
 
+
+        //Tidak bisa di kerjakan karena bukan matrix persegi
         } else {
             System.out.println("Tidak bisa diselesaikan dengan cara ini silakan gunakan cara lain");
-            MainMenu();
         }
     }
 }
