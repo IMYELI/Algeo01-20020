@@ -42,6 +42,10 @@ class MainMenu{
                 matrix = inversMatrix.invers(matrix,sc);  
                 
             }else if(pilMenu == 4){
+                System.out.print("Masukan besar banyak titik: ");
+                m = sc.nextInt();
+                matrix = BacaInterpolasi.baca(sc,m);
+                float[] mVar = InterpolasiPolinom.interpolasi(matrix); 
 
             }else if(pilMenu == 5){
 
