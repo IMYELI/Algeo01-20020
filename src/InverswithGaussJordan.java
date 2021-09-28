@@ -7,7 +7,6 @@ public class InverswithGaussJordan {
         float[][] id = new float[matrix.length][matrix.length];
         id = IdentitasGenerator.generate(matrix.length);
         float[][] copyM = new float[matrix.length][matrix.length*2];
-        float determinan = determinanCramer.detKofaktor(matrix);
         //Menambahkan matriks identitas di kanan matriks yang akan dicari inversnya
         for(i=0;i<matrix.length;i++){
             for(j=0;j<matrix.length*2;j++){

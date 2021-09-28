@@ -46,7 +46,7 @@ public class SPLwithGaussJordan {
             int colSol = solusiX.length;
             for (idx = colSol - 1; idx >= 0; idx++) {
                 int n = colSol - idx + 1;
-                System.out.format("X%i = %.2f %n", idx, solusiX[idx]);
+                System.out.format("X%i = %.2f %n", n, solusiX[idx]);
             }
         } else if (solusi == 2) {
             System.out.println("Tidak ada Solusi");

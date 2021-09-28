@@ -25,11 +25,10 @@ public class SPLwithKofaktor {
 
             for (idxCol = 0; idxCol < col; idxCol++) {
                 temp = changeCol(matrixA, matrixB, idxCol);
-
+                float detTemp = determinanCramer.detKofaktor(temp);
+                float x = detTemp/determinan;
+                System.out.format("X%i = %.2f  %n", (idxCol+1), x);
             }
-            
-            
-
         //Tidak bisa di kerjakan karena bukan matrix persegi
         } else {
             System.out.println("Tidak bisa diselesaikan dengan cara ini silakan gunakan cara lain");

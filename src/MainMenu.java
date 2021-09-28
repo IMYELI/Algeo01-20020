@@ -5,7 +5,7 @@ class MainMenu{
         float[][] matrix;
         Scanner sc = new Scanner(System.in);
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
-        int m,n;
+        int m;
         while (!keluar){
             
             System.out.println("MAIN MENU: ");
