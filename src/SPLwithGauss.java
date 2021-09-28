@@ -13,7 +13,7 @@ public class SPLwithGauss {
         return isManySolution;
     }
 
-    public static void SPLGauss(float[][] matrix) {
+    public static float[][] SPLGauss(float[][] matrix) {
         float[][] matrixHasil;
         int solusi = 1, idx, row, col;
         boolean isAllNol = true, isSquare = true;
@@ -38,7 +38,7 @@ public class SPLwithGauss {
         }
 
         if (solusi == 1) {
-            float solusiX[] = new float[row];
+            float solusiX[] = new float[row-1];
             int idxUnik, idxHasilUnik;
 
             for (idxUnik = row - 1; idxUnik >= 0; idxUnik--) {
@@ -48,9 +48,9 @@ public class SPLwithGauss {
                     solusiX[idxUnik] -= matrixHasil[idxUnik][idxSol] * solusiX[idxSol];
                 }
             }
-            int pnjgSol = solusiX.length;
+            int colSol = solusiX.length;
             for (idxHasilUnik = colSol - 1; idxHasilUnik >= 0; idxHasilUnik--) {
-                int n = colSol - idxHasilUnik;
+                int n = colSol - idxHasilUnik + 1;
                 System.out.format("X%i = %.2f %n", n, solusiX[idxHasilUnik]);
             }
 
@@ -80,8 +80,6 @@ public class SPLwithGauss {
             }
 
         } */
-
+        return matrix;
     }
-
-
 }
