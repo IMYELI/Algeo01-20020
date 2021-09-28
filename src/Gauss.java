@@ -8,13 +8,18 @@ public class Gauss {
         for(j=0;j<matrix.length;j++){
             for(m=k;m<matrix.length;m++){
                 tag = copyM[m][k];              //Pembagi untuk setiap baris
-                for(n=k;n<copyM[0].length;n++){      
-                    copyM[m][n] = copyM[m][n]/tag;  //Pembagian agar angka paling kiri bernilai 1
+                for(n=k;n<copyM[0].length;n++){     
+                    if(tag!=0){                 //Mencegah pembagian dengan angka 0
+                        copyM[m][n] = copyM[m][n]/tag;  //Pembagian agar angka paling kiri bernilai 1
+                    } 
                 }
             }
             for(i=k;i<matrix.length-1;i++){
                 for(o=k;o<copyM[0].length;o++){
-                    copyM[i+1][o] = copyM[i+1][o] - copyM[k][o];    //Pengurangan dengan baris paling atas yang bernilai 1
+                    if(copyM[i+1][o] != 0){
+                        copyM[i+1][o] = copyM[i+1][o] - copyM[k][o];    //Pengurangan dengan baris paling atas yang bernilai 1
+                    }
+                   
                 }
             }
             k++;
