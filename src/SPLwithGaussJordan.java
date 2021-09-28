@@ -21,6 +21,11 @@ public class SPLwithGaussJordan {
         matrixHasil = Gauss.jordan(matrix);
         col = matrixHasil[0].length;
         row = matrix.length;
+
+        if (row != col - 1) {
+            solusi = 3
+        }
+
         for (idx = 0; idx < col - 1; idx++) {
             if (matrixHasil[row-1][idx] != 0) {
                 isAllNol = false;

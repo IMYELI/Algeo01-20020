@@ -22,6 +22,10 @@ public class SPLwithGauss {
         col = matrixHasil[0].length;
         row = matrix.length;
 
+        if (row != col - 1) {
+            solusi = 3
+        }
+
         for (idx = 0; idx < col - 1; idx++) {
             if (matrixHasil[row-1][idx] != 0) {
                 isAllNol = false;
@@ -30,7 +34,7 @@ public class SPLwithGauss {
         if (isAllNol) {
             solusi = 2;
         }
-
+        //pasti square
         if (solusi == 1) {
             float solusiX[] = new float[row];
             int idxUnik, idxHasilUnik;
@@ -51,7 +55,7 @@ public class SPLwithGauss {
         } else if (solusi == 2) {
             System.out.println("Tidak ada Solusi");
 
-        } /* else {
+        } /* else if (solusi = 3) {
             int lengthMany = 0, idxBanyak, rowBanyak, colBanyak;
             char solusiBanyak[] = new char[col];
             char solBanyak = 's';
