@@ -1,4 +1,12 @@
 public class Gauss {
+    public static int idxNotNol (float[]row) {
+        idxNot = 0;
+
+        while (row[idxNot] == 0) {
+            idxNot++;
+        }
+    }
+
     public static float[][] gauss(float[][] matrix){
         float[][] copyM = new float[matrix.length][matrix[0].length];
         copyM = BacaTulisMatrix.copy(matrix);
