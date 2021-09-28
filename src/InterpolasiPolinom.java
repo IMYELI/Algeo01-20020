@@ -11,16 +11,7 @@ public class InterpolasiPolinom {
         for(i=0;i<mHasil.length;i++){
             mVar[i] = mHasil[i][mHasil[0].length-1];
         }
-        System.out.println("Persamaan polinomial yang terbentuk: ");
-        for(i=0;i<mVar.length;i++){
-            if(i == mVar.length){
-                System.out.print(" = ");
-            }
-            System.out.printf("%fX%d",mVar[i],i);
-            if(i!=mVar.length){
-                System.out.print(" + ");
-            }
-        }
+        
         return mVar;
     }
 

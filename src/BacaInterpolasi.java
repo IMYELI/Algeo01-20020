@@ -76,5 +76,29 @@ public class BacaInterpolasi {
         return k;
     }
 
+    public static void tulis(float[] mVar){
+        int i;
+        boolean negatif;
+        for(i=0;i<mVar.length;i++){
+            negatif = false;
+            if(i == 0){
+                System.out.print("Y = ");
+            }
+            if(i<mVar.length-2){
+                if(mVar[i+1]<0){
+                    negatif = true;
+                }
+            }
+            if(i!=0){
+                System.out.printf(" %.3fX^%d ",mVar[i],i+1);
+            }else{
+                System.out.printf(" %.3fX ",mVar[i]);
+            }
+            
+            if(i!=mVar.length-1&&!negatif){
+                System.out.print("+");
+            }
+        }
+    }
     
 }

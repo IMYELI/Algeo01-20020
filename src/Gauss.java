@@ -46,7 +46,6 @@ public class Gauss {
     } 
     public static float[][] jordan(float[][] matrix){
         float[][] copyM = Gauss.gauss(matrix);
-        BacaTulisMatrix.tulis(copyM);
         int i,j,k,o;
         float tag;
         //PENERAPAN METODE GAUSS-JORDAN

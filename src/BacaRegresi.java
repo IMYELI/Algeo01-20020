@@ -99,20 +99,24 @@ public class BacaRegresi {
         boolean negatif;
         for(i=0;i<matrix.length;i++){
             negatif = false;
-            if(i==matrix.length-1){
-                System.out.print(" = ");
+            if(i==0){
+                System.out.print("Y =");
             }
             if(i==0){
                 System.out.printf("%f",matrix[i][matrix[0].length-1]);
             }else{
-                System.out.printf("%fX%d",matrix[i][matrix[0].length-1],i);
+                System.out.printf(" %fX%d ",matrix[i][matrix[0].length-1],i);
             }
-            if(matrix[i][matrix[0].length-1]<0){
-                negatif = true;
+            if(i<matrix.length-2){
+                if(matrix[i+1][matrix[0].length-1]<0){
+                    negatif = true;
+            }
+            
             }
             if (i!= matrix.length-1 && !negatif){
                 System.out.print("+");
             }
+            
         }
     }
 }

@@ -44,13 +44,17 @@ class MainMenu{
             }else if(pilMenu == 4){
                 matrix = BacaInterpolasi.baca(sc);
                 float[] mVar = InterpolasiPolinom.interpolasi(matrix); 
+                System.out.println("Persamaan polinomial yang terbentuk: ");
+                BacaInterpolasi.tulis(mVar);
+                System.out.println();
 
             }else if(pilMenu == 5){
                 matrix = BacaRegresi.baca(sc);
-                BacaTulisMatrix.tulis(matrix);
                 matrix = BacaRegresi.convertKali(matrix);
                 matrix = Gauss.jordan(matrix);
+                System.out.println("Hasil regresi matrix: ");
                 BacaRegresi.tulis(matrix);
+                System.out.println();
                 
             }else if(pilMenu == 6){
                 keluar = true;
