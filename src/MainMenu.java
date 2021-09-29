@@ -3,10 +3,12 @@ class MainMenu{
     public static void main(String[] args){
         boolean keluar = false;
         double[][] matrix;
+        
         double hasilDet,taksiran,hasil;
         Scanner sc = new Scanner(System.in);
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
-        int m,n;
+        int m,n,flag,i;
+        boolean stop = false;
         while (!keluar){
             
             System.out.println("MAIN MENU: ");
@@ -49,12 +51,22 @@ class MainMenu{
                 System.out.println("Persamaan polinomial yang terbentuk: ");
                 BacaInterpolasi.tulis(mVar);
                 System.out.println();
-                System.out.print("Masukan nilai yang ingin ditaksir: ");
-                taksiran = sc.nextDouble();
-                hasil = InterpolasiPolinom.taksir(mVar, taksiran);
-                System.out.println("Hasil taksiran:");
-                System.out.printf("%f",hasil);
-                System.out.println();
+                while(!stop){
+                    System.out.print("Masukan nilai yang ingin ditaksir: ");
+                    taksiran = sc.nextDouble();
+                    hasil = InterpolasiPolinom.taksir(mVar, taksiran);
+                    System.out.println("Hasil taksiran:");
+                    System.out.printf("%f",hasil);
+                    System.out.println();
+                    System.out.print("Apakah anda masih ingin menaksir?(input 1 jika ya, input sembarang jika tidak): ");
+                    flag = sc.nextInt();
+                    if(flag != 1){
+                        stop = true;
+                    }
+                    System.out.println();
+
+                }
+                
 
             }else if(pilMenu == 5){
                 matrix = BacaRegresi.baca(sc);
@@ -62,8 +74,25 @@ class MainMenu{
                 matrix = Gauss.jordan(matrix);
                 System.out.println("Hasil regresi matrix: ");
                 BacaRegresi.tulis(matrix);
+                double[] mVar = BacaRegresi.ubah1D(matrix);
                 System.out.println();
-                
+                double[] taksiranRegresi = new double[mVar.length];
+                while(!stop){
+                    System.out.print("Masukan nilai yang ingin ditaksir: ");
+                    for(i=0;i<mVar.length-1;i++){
+                        taksiranRegresi[i] = sc.nextDouble();
+                    }
+                    hasil = BacaRegresi.taksir(mVar, taksiranRegresi);
+                    System.out.println("Hasil taksiran:");
+                    System.out.printf("%f",hasil);
+                    System.out.println();
+                    System.out.print("Apakah anda masih ingin menaksir?(input 1 jika ya, input sembarang jika tidak): ");
+                    flag = sc.nextInt();
+                    if(flag != 1){
+                        stop = true;
+                    }
+                    System.out.println();
+                }
             }else if(pilMenu == 6){
                 keluar = true;
             }else{

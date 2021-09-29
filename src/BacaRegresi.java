@@ -97,7 +97,9 @@ public class BacaRegresi {
     public static void tulis(double[][] matrix){
         int i;
         boolean negatif;
+        
         for(i=0;i<matrix.length;i++){
+            
             negatif = false;
             if(i==0){
                 System.out.print("Y = ");
@@ -118,6 +120,23 @@ public class BacaRegresi {
             }
             
         }
+    }
+
+    public static double[] ubah1D(double[][] matrix){
+        double[] hasil = new double[matrix.length];
+        int i;
+        for(i=0;i<matrix.length;i++){
+            hasil[i] = matrix[i][matrix[0].length-1];
+        }
+        return hasil;
+    }
+    public static double taksir(double[] hasil,double[] taksiran){
+        double akhir = hasil[0];
+        int i;
+        for(i=1;i<hasil.length;i++){
+            akhir = akhir + hasil[i]*taksiran[i-1]; 
+        }
+        return akhir;
     }
 }
 
