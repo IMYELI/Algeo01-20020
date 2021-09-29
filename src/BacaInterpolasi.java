@@ -89,15 +89,19 @@ public class BacaInterpolasi {
                     negatif = true;
                 }
             }
-            if(i!=0){
-                System.out.printf(" %.3fX^%d ",mVar[i],i+1);
-            }else{
-                System.out.printf(" %.3fX ",mVar[i]);
+            if(i>1 && mVar[i] != 0){
+                System.out.printf(" %fX^%d ",mVar[i],i);
+            }else if(i==1){
+                System.out.printf(" %fX ",mVar[i]);
+            }else if(i==0){
+                System.out.printf(" %f ",mVar[i]);
+            }
+            if(i<mVar.length-2){
+                if(!negatif && mVar[i+1] != 0){
+                    System.out.print("+");
+                }
             }
             
-            if(i!=mVar.length-1&&!negatif){
-                System.out.print("+");
-            }
         }
     }
     

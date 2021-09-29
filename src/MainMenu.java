@@ -3,7 +3,7 @@ class MainMenu{
     public static void main(String[] args){
         boolean keluar = false;
         float[][] matrix;
-        float hasilDet;
+        float hasilDet,taksiran,hasil;
         Scanner sc = new Scanner(System.in);
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
         int m,n;
@@ -39,6 +39,7 @@ class MainMenu{
                 matrix = bacaMat.baca(sc);
                 System.out.println("\nMatrix yang anda input: ");
                 BacaTulisMatrix.tulis(matrix);
+                System.out.println("\nMatrix hasil invers: ");
                 matrix = inversMatrix.invers(matrix,sc);  
                 
             }else if(pilMenu == 4){
@@ -46,6 +47,12 @@ class MainMenu{
                 float[] mVar = InterpolasiPolinom.interpolasi(matrix); 
                 System.out.println("Persamaan polinomial yang terbentuk: ");
                 BacaInterpolasi.tulis(mVar);
+                System.out.println();
+                System.out.print("Masukan nilai yang ingin ditaksir: ");
+                taksiran = sc.nextFloat();
+                hasil = InterpolasiPolinom.taksir(mVar, taksiran);
+                System.out.println("Hasil taksiran:");
+                System.out.printf("%f",hasil);
                 System.out.println();
 
             }else if(pilMenu == 5){

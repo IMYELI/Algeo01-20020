@@ -115,4 +115,10 @@ public class BacaTulisMatrix {
         }
         return matrix;
     }
+    public static void tulis1D(float[] matrix){
+        int i;
+        for(i=0;i<matrix.length;i++){
+            System.out.printf("%f ",matrix[i]);
+        }
+    }
 }  
