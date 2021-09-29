@@ -18,11 +18,11 @@ public class inversMatrix{
                 return matrix;
             }
             if(pilMenu == 1){
-                hasilinversMatrix = InverswithGaussJordan.InversGaussJordan(matrix);
+                hasilinversMatrix = InversPakeGaussJordan.InversGaussJordan(matrix);
                 System.out.println("\nMatrix setelah di inverse: ");
                 BacaTulisMatrix.tulis(hasilinversMatrix);
             }else if(pilMenu == 2){
-                hasilinversMatrix = InverswithAdjoin.InversAdjoin(matrix, determinan);
+                hasilinversMatrix = InversPakeAdjoin.InversAdjoin(matrix, determinan);
                 System.out.println("\nMatrix setelah di inverse: ");
                 BacaTulisMatrix.tulis(hasilinversMatrix);
             }else if(pilMenu == 3){
