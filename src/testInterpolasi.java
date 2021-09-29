@@ -2,7 +2,7 @@ import java.lang.Math;
 
 public class testInterpolasi{
     public static void main(String[] args){
-        System.out.println("Nomor 1");
+        System.out.println("Nomor 6a");
         int i,j,k;
         int balik = 1;
         float[][] matrix = {{(float)0.1,(float)0.003},
@@ -28,8 +28,14 @@ public class testInterpolasi{
         }
 
         for (k=0; k<result.length; k++){
-            if(result[k]>expResult[k]+0.01 || result[k]<expResult[k]-0.01){
-                balik = 0;
+            if (result[k]<0){
+                if (result[k]<1.05*expResult[k] || result[k]>0.95*expResult[k]){
+                    balik = 0;
+                }
+            } else {
+                if (result[k]>1.05*expResult[k] || result[k]<0.95*expResult[k]){
+                    balik = 0;
+                }
             }
         }
        
@@ -49,7 +55,7 @@ public class testInterpolasi{
         }
 
         System.out.println("");
-        System.out.println("Nomor 2");
+        System.out.println("Nomor 6b");
         int m,n,o;
         int balik2 = 1;
         float[][] matrix2 = {{(float)6.567,12624},
@@ -93,6 +99,43 @@ public class testInterpolasi{
         System.out.println(result2[3]);
 
         if (balik2 == 1){
+            System.out.println("jawaban benar");
+        } else {
+            System.out.println("jawaban salah");
+        }
+
+        System.out.println("");
+        System.out.println("Nomor 6c");
+        int x,y;
+        int balik3 = 1;
+        //melakukan tes untuk interpolasi derajat 5 seperti di soal
+        float[][] matrix3 = {{(float)0.4,(float)0.4188},
+                             {(float)0.8,(float)0.5071},
+                             {(float)1.2,(float)0.5609},
+                             {(float)1.6,(float)0.5836},
+                             {(float)2.0,(float)0.5766}};
+        float result3[] = InterpolasiPolinom.interpolasi(matrix3);
+        float[] expResult3 = {(float)0.2906,(float)0.376125,(float)-0.147292,(float)0.021875,(float)-0.003255};
+
+        for (x=0; x<result3.length; x++){
+            if (result3[x]<0){
+                if (result3[x]<1.05*expResult3[x] || result3[x]>0.95*expResult3[x]){
+                    balik3 = 0;
+                }
+            } else {
+                if (result3[x]>1.05*expResult3[x] || result3[x]<0.95*expResult3[x]){
+                    balik3 = 0;
+                }
+            }
+        }
+        System.out.print("nilai untuk angka awal = ");
+        System.out.println(result3[0]);
+        for (y=1; y<result3.length; y++){
+            System.out.print("nilai variabel pangkat " + y + " = ");
+            System.out.println(result3[y]);
+        }
+
+        if (balik3 == 1){
             System.out.println("jawaban benar");
         } else {
             System.out.println("jawaban salah");
