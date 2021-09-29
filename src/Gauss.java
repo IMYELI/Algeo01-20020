@@ -1,18 +1,21 @@
 public class Gauss {
 
     public static float[][] sortRowMatrix (float[][] matrix, int row){
-        int idxRow, idxCol, col = matrix[0].length;
+        int idxRow;
+        boolean sorted = true;
         float[][] copyMatrix = BacaTulisMatrix.copy(matrix);
-
-        for (idxRow = row; idxRow < matrix.length - 1; idxRow++) {
-            for (idxCol = 0; idxCol < col - idxRow; idxCol++) {
+        while(!sorted){
+            sorted = true;
+            for (idxRow = row; idxRow < matrix.length - 1; idxRow++) {
                 int idxNotNolSeb = BacaTulisMatrix.idxNot0(matrix, idxRow);
                 int idxNotNolSes = BacaTulisMatrix.idxNot0(matrix, idxRow+1);
                 if (idxNotNolSeb > idxNotNolSes) {
                     matrix = BacaTulisMatrix.swapRow(copyMatrix, idxRow);
+                    sorted = false;
                 }
             }
         }
+            
         return matrix;
     }
 
@@ -21,10 +24,10 @@ public class Gauss {
         copyM = BacaTulisMatrix.copy(matrix);
         int i,j,k,m,n,o;
         float tag;
-        
+
         for(j=0;j<matrix.length;j++){
-            k = BacaTulisMatrix.idxNot0(matrix, j);
             matrix = sortRowMatrix(copyM, j); //Mengesort idx bukan nol pertama terurut membesar
+            k = BacaTulisMatrix.idxNot0(matrix, j);
             for(m=k;m<matrix.length;m++){
                 tag = copyM[m][k];              //Pembagi untuk setiap baris
                 for(n=k;n<copyM[0].length;n++){     
