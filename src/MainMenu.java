@@ -39,8 +39,9 @@ class MainMenu{
                 matrix = bacaMat.baca(sc);
                 System.out.println("\nMatrix yang anda input: ");
                 BacaTulisMatrix.tulis(matrix);
+                matrix = inversMatrix.invers(matrix,sc);
                 System.out.println("\nMatrix hasil invers: ");
-                matrix = inversMatrix.invers(matrix,sc);  
+                BacaTulisMatrix.tulis(matrix);  
                 
             }else if(pilMenu == 4){
                 matrix = BacaInterpolasi.baca(sc);
