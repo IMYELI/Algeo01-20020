@@ -1,6 +1,6 @@
 public class SPLwithInvers {
     public static void SPLInvers(float[][] matrix) {
-        int newRow = matrix.length, newCol = matrix[0].length-1;
+        int newRow = OperasiMatrix.getRow(matrix), newCol = OperasiMatrix.getCol(matrix)-1;
         
         float[][] matrixA = OperasiMatrix.makeMatrixA(matrix, newRow, newCol);
         float[][] matrixB = OperasiMatrix.makeMatrixB(matrix, newRow, newCol);

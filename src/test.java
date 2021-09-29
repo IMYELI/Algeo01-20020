@@ -9,7 +9,21 @@ public class test {
         matrix = bacaMat.baca(sc);
         BacaTulisMatrix.tulis(matrix);
         System.out.println();
-        SPLwithKofaktor.SPLKofaktor(matrix);
+/*
+        int newRow = matrix.length, newCol = matrix[0].length - 1;    
+        float[][] matrixA = OperasiMatrix.makeMatrixA(matrix, newRow, newCol);
+        float[][] matrixB = OperasiMatrix.makeMatrixB(matrix, newRow, newCol);
+        float[][] temp = BacaTulisMatrix.copy(matrixA);
+        
+        SPLwithKofaktor.changeCol(temp, matrixB, 2);
+        BacaTulisMatrix.tulis(temp);
+        temp = BacaTulisMatrix.copy(matrixA);
+        SPLwithKofaktor.changeCol(temp, matrixB, 1);
+        BacaTulisMatrix.tulis(temp);
+        */
+        SPLwithCramer.SPLCramer(matrix);
+
+
         /*
         matrix = Gauss.jordan(matrix);
         BacaTulisMatrix.tulis(matrix);

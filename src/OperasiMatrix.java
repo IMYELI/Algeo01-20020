@@ -71,5 +71,11 @@ public class OperasiMatrix {
         }
         return matrixHasil;
     }
+    public static void changeCol(float[][] matrixA, float[][] matrixB, int col) {
+        int row = matrixA.length, idxRow;
 
+        for (idxRow = 0; idxRow < row; idxRow++) {
+            matrixA[idxRow][col] = matrixB[idxRow][0];
+        }
+    }
 }
