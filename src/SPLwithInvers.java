@@ -1,37 +1,29 @@
 public class SPLwithInvers {
     public static void SPLInvers(float[][] matrix) {
-        boolean isSquare = true;
-        int newRow = matrix.length, newCol = matrix[0].length;
-        float[][] matrixA = new float[newRow][newCol-1]; float[][] matrixB = new float[newRow][1];
-        int row = matrixA.length, col = matrixA[0].length;
+        int newRow = matrix.length, newCol = matrix[0].length-1;
+        
+        float[][] matrixA = OperasiMatrix.makeMatrixA(matrix, newRow, newCol);
+        float[][] matrixB = OperasiMatrix.makeMatrixB(matrix, newRow, newCol);
 
-        if (row != col) {
-            isSquare = false;
-        }
-        //Matrix Square
-        if (isSquare) {
-            boolean isNol = true;
-            int idx = 0;
+        int rowA = OperasiMatrix.getRow(matrixA), colA = OperasiMatrix.getCol(matrixA);
+        int rowB = OperasiMatrix.getRow(matrixB), colB = OperasiMatrix.getCol(matrixB);
+        
 
-            while (isNol) {
-                if (matrixB[idx][0] != 0) {
-                    isNol = false;
-                } else {
-                    idx++;
-                }
-            }
+        if (OperasiMatrix.isSquare(matrixA) && colA == rowB) {
+            boolean isNol = OperasiMatrix.isMatrixBNol(matrixB);
             float determinan = determinanCramer.detKofaktor(matrixA);
             //B matrix nol
             if (isNol) {
                 //Determinan = 0
                 if (determinan == 0) {
                     System.out.println("Solusi tidak trivial, gunakan cara lain.");
-
                 } else {
+                    int idx;
                     System.out.println("Solusinya sebagai berikut : ");
-                    for (idx = 0; idx < matrixA[0].length; idx++) {
+                    for (idx = 0; idx < colA; idx++) {
                         int n = idx + 1;
-                        System.out.format("X%i = 0 %n", n);
+                        System.out.format("X%o = 0", n);
+                        System.out.println();
                     }
                 }
             //B bukan matrix nol
@@ -39,27 +31,19 @@ public class SPLwithInvers {
                 //Determinan = 0
                 if (determinan == 0) {
                     System.out.println("Solusi tidak tunggal unik, gunakan cara lain.");
-
                 } else {
-                    int rowHasil = matrixA[0].length, colHasil = matrixB.length, idxRow, idxCol, idxPlus;
-                    float[][] matrixHasil = new float[rowHasil - 1][colHasil - 1];
+                    int idxRow, idxCol;
 
-                    for (idxRow = 0; idxRow < rowHasil; idxRow++) {
-                        int idxTemp = 0;
-                        for (idxCol = 0; idxCol < colHasil; idxCol++) {
-                            int temp = 0, idxTempPlus = idxRow;
-                            for (idxPlus = 0; idxPlus < matrixA[0].length; idxPlus++) {
-                                temp += matrixA[idxTempPlus][idxPlus]*matrixB[idxPlus][idxTemp];
-                            }
-                            matrixHasil[idxRow][idxCol] = temp;
-                            idxTemp++;
-                        }
-                    }
+                    float[][] matrixInversA = InversPakeAdjoin.InversAdjoin(matrixA, determinan);
+                    float[][] matrixHasil = OperasiMatrix.mutiplyMatrix(matrixInversA, matrixB, rowA, colB);
+                    int rowHasil = OperasiMatrix.getRow(matrixHasil), colHasil = OperasiMatrix.getCol(matrixHasil);
+
                     System.out.println("Solusinya sebagai berikut : ");
                     for (idxRow = 0; idxRow < rowHasil; idxRow++) {
-                        for (idxCol = 0; idxCol < colHasil; idxCol++) {
-                            System.out.format("X%i = %.2f %n", idxRow, matrixHasil[idxRow][idxCol]);
-                        }
+                        for (idxCol = 0 ; idxCol < colHasil; idxCol++) {
+                            System.out.format("X%o = %.2f", (idxRow + 1), matrixHasil[idxRow][idxCol]);
+                            System.out.println();
+                        }  
                     }
                 }
             }

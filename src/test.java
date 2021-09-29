@@ -5,12 +5,15 @@ public class test {
         
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
         float[][] matrix;
-        bacaMat.setMat(5,6);
+        bacaMat.setMat(3,4);
         matrix = bacaMat.baca(sc);
         BacaTulisMatrix.tulis(matrix);
         System.out.println();
+        SPLwithInvers.SPLInvers(matrix);
+        /*
         matrix = Gauss.jordan(matrix);
         BacaTulisMatrix.tulis(matrix);
+        */
         /*
 
         float[] a = new float[10];
