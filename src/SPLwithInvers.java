@@ -22,9 +22,11 @@ public class SPLwithInvers {
                     int idxRow;
 
                     float[][] matrixInversA = InversPakeAdjoin.InversAdjoin(matrixA, determinan);
+                    System.out.println("a");
                     float[][] matrixHasil = OperasiMatrix.mutiplyMatrix(matrixInversA, matrixB, rowA, colB);
+                    
                     int rowHasil = OperasiMatrix.getRow(matrixHasil), colHasil = OperasiMatrix.getCol(matrixHasil);
-
+                    
                     System.out.println("Solusinya sebagai berikut : ");
                     for (idxRow = 0; idxRow < rowHasil; idxRow++) {
                         System.out.format("X%o = %.2f", (idxRow + 1), matrixHasil[idxRow][colHasil-1]);

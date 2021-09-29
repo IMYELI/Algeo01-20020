@@ -4,13 +4,13 @@ public class test {
         Scanner sc = new Scanner(System.in);
         
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
-        double[][] matrix;
+        float[][] matrix;
         bacaMat.setMat(10,11);
         matrix = bacaMat.baca(sc);
         BacaTulisMatrix.tulis(matrix);
         System.out.println();
-        matrix = Gauss.jordan(matrix);
-        BacaTulisMatrix.tulis(matrix);
+        SPLwithInvers.SPLInvers(matrix);
+
 /*
         int newRow = matrix.length, newCol = matrix[0].length - 1;    
         float[][] matrixA = OperasiMatrix.makeMatrixA(matrix, newRow, newCol);

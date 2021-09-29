@@ -24,7 +24,6 @@ public class InversPakeAdjoin {
 
 
                 }
-                System.out.println();
                 if((row+col)%2 == 0){
                     tmp2[row][col] = determinanCramer.detKofaktor(tmp);
                 }else{
