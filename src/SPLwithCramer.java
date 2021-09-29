@@ -10,9 +10,9 @@ public class SPLwithCramer {
         int colA = OperasiMatrix.getCol(matrixA);
         float determinan = determinanCramer.detKofaktor(matrixA);
     
-        if (OperasiMatrix.isSquare(matrixA)) {
+        if (OperasiMatrix.isSquare(matrixA) && determinan != 0) {
             int idxCol;
-
+            System.out.println("Solusinya sebagai berikut : ");
             for (idxCol = 0; idxCol < colA; idxCol++) {
                 OperasiMatrix.changeCol(temp, matrixB, idxCol);
                 float detTemp = determinanCramer.detKofaktor(temp);
@@ -23,7 +23,7 @@ public class SPLwithCramer {
             }
         //Tidak bisa di kerjakan karena bukan matrix persegi
         } else {
-            System.out.println("Tidak bisa diselesaikan dengan cara ini silakan gunakan cara lain");
+            System.out.println("Tidak bisa diselesaikan dengan cara ini silakan gunakan cara lain.");
         }
     }
 }
