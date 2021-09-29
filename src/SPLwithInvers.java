@@ -12,27 +12,14 @@ public class SPLwithInvers {
         if (OperasiMatrix.isSquare(matrixA) && colA == rowB) {
             boolean isNol = OperasiMatrix.isMatrixBNol(matrixB);
             float determinan = determinanCramer.detKofaktor(matrixA);
-            //B matrix nol
-            if (isNol) {
-                //Determinan = 0
-                if (determinan == 0) {
-                    System.out.println("Solusi tidak trivial, gunakan cara lain.");
-                } else {
-                    int idx;
-                    System.out.println("Solusinya sebagai berikut : ");
-                    for (idx = 0; idx < colA; idx++) {
-                        int n = idx + 1;
-                        System.out.format("X%o = 0", n);
-                        System.out.println();
-                    }
-                }
-            //B bukan matrix nol
-            } else {
-                //Determinan = 0
-                if (determinan == 0) {
-                    System.out.println("Solusi tidak tunggal unik, gunakan cara lain.");
-                } else {
-                    int idxRow, idxCol;
+            //B matrix nol & determinan = 0
+            if (isNol && determinan == 0) {
+                System.out.println("Solusi tidak trivial, gunakan cara lain.");
+            //B bukan matrix nol & determinan = 0
+            } else if (!isNol && determinan == 0) {
+                System.out.println("Solusi tidak tunggal unik, gunakan cara lain.");
+            } else if (!isNol && determinan != 0) {
+                    int idxRow;
 
                     float[][] matrixInversA = InversPakeAdjoin.InversAdjoin(matrixA, determinan);
                     float[][] matrixHasil = OperasiMatrix.mutiplyMatrix(matrixInversA, matrixB, rowA, colB);
@@ -40,12 +27,9 @@ public class SPLwithInvers {
 
                     System.out.println("Solusinya sebagai berikut : ");
                     for (idxRow = 0; idxRow < rowHasil; idxRow++) {
-                        for (idxCol = 0 ; idxCol < colHasil; idxCol++) {
-                            System.out.format("X%o = %.2f", (idxRow + 1), matrixHasil[idxRow][idxCol]);
-                            System.out.println();
-                        }  
+                        System.out.format("X%o = %.2f", (idxRow + 1), matrixHasil[idxRow][colHasil-1]);
+                        System.out.println();
                     }
-                }
             }
         //bukan matrix square tidak bisa invers
         } else {
@@ -53,3 +37,5 @@ public class SPLwithInvers {
         }
     }
 }
+
+
