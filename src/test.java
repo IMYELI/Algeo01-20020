@@ -4,11 +4,13 @@ public class test {
         Scanner sc = new Scanner(System.in);
         
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
-        float[][] matrix;
-        bacaMat.setMat(4,5);
+        double[][] matrix;
+        bacaMat.setMat(10,11);
         matrix = bacaMat.baca(sc);
         BacaTulisMatrix.tulis(matrix);
         System.out.println();
+        matrix = Gauss.jordan(matrix);
+        BacaTulisMatrix.tulis(matrix);
 /*
         int newRow = matrix.length, newCol = matrix[0].length - 1;    
         float[][] matrixA = OperasiMatrix.makeMatrixA(matrix, newRow, newCol);
@@ -20,9 +22,9 @@ public class test {
         temp = BacaTulisMatrix.copy(matrixA);
         SPLwithKofaktor.changeCol(temp, matrixB, 1);
         BacaTulisMatrix.tulis(temp);
-        */
+        
         SPLwithCramer.SPLCramer(matrix);
-
+        */
 
         /*
         matrix = Gauss.jordan(matrix);
