@@ -11,10 +11,13 @@ public class SPLwithKofaktor {
 
     public static void SPLKofaktor(float[][] matrix) {
         boolean isSquare = true;
-        int newRow = matrix.length, newCol = matrix[0].length;
-        float[][] matrixA = new float[newRow][newCol-1]; float[][] matrixB = new float[newRow][1];
+        int newRow = matrix.length, newCol = matrix[0].length - 1;
+
+        float[][] matrixA = OperasiMatrix.makeMatrixA(matrix, newRow, newCol);
+        float[][] matrixB = OperasiMatrix.makeMatrixB(matrix, newRow, newCol);
+
         int row = matrixA.length, col = matrixA[0].length;
-        float[][] temp = new float[row -1][col -1];
+        float[][] temp = BacaTulisMatrix.copy(matrixA);
         float determinan;
 
         if (row != col) {
@@ -29,7 +32,8 @@ public class SPLwithKofaktor {
                 temp = changeCol(matrixA, matrixB, idxCol);
                 float detTemp = determinanCramer.detKofaktor(temp);
                 float x = detTemp/determinan;
-                System.out.format("X%i = %.2f  %n", (idxCol+1), x);
+                System.out.format("X%o = %.2f  %n", (idxCol+1), x);
+                temp = BacaTulisMatrix.copy(matrixA);
             }
         //Tidak bisa di kerjakan karena bukan matrix persegi
         } else {

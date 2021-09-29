@@ -21,8 +21,9 @@ public class Gauss {
         copyM = BacaTulisMatrix.copy(matrix);
         int i,j,k,m,n,o;
         float tag;
-        k = 0;
+        
         for(j=0;j<matrix.length;j++){
+            k = BacaTulisMatrix.idxNot0(matrix, j);
             matrix = sortRowMatrix(copyM, j); //Mengesort idx bukan nol pertama terurut membesar
             for(m=k;m<matrix.length;m++){
                 tag = copyM[m][k];              //Pembagi untuk setiap baris
@@ -40,7 +41,6 @@ public class Gauss {
                    
                 }
             }
-            k++;
         }
         return copyM;
     } 
