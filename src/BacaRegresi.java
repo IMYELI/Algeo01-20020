@@ -100,7 +100,7 @@ public class BacaRegresi {
         for(i=0;i<matrix.length;i++){
             negatif = false;
             if(i==0){
-                System.out.print("Y =");
+                System.out.print("Y = ");
             }
             if(i==0){
                 System.out.printf("%f",matrix[i][matrix[0].length-1]);
