@@ -34,7 +34,7 @@ public class Gauss {
             }
             for(i=k;i<matrix.length-1;i++){
                 for(o=k;o<copyM[0].length;o++){
-                    if(copyM[i+1][o] != 0){
+                    if(copyM[i+1][o] != 0 || o>k){
                         copyM[i+1][o] = copyM[i+1][o] - copyM[k][o];    //Pengurangan dengan baris paling atas yang bernilai 1
                     }
                    
