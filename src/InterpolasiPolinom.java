@@ -16,8 +16,8 @@ public class InterpolasiPolinom {
 
     public static float taksir(float[] matrix,float taksiran){
         int i;
-        float hasil = 0;
-        for(i=0;i<matrix.length;i++){
+        float hasil = matrix[0];
+        for(i=1;i<matrix.length;i++){
             hasil = hasil + (matrix[i]*BacaInterpolasi.pow(taksiran,i));
         }
         return hasil;
