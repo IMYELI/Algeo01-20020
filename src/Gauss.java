@@ -36,8 +36,7 @@ public class Gauss {
                     } 
                 }
             }
-            BacaTulisMatrix.tulis(copyM);
-            System.out.println();
+
             for(i=k;i<matrix.length-1;i++){
                 for(o=k;o<copyM[0].length;o++){
                     if(copyM[i+1][o] != 0 || o>k){
@@ -46,8 +45,6 @@ public class Gauss {
                    
                 }
             }
-            BacaTulisMatrix.tulis(copyM);
-            System.out.println();
         }
         return copyM;
     } 
@@ -69,8 +66,6 @@ public class Gauss {
                 }
             }
             k--;
-            BacaTulisMatrix.tulis(copyM);
-            System.out.println();
         }
         return copyM;
     }

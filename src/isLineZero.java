@@ -1,5 +1,5 @@
 public class isLineZero {
-    public static int isZero(Double matrix[][]){
+    public static int isZero(double matrix[][]){
         int i,j,result,count;
         
         result = 0;
@@ -31,3 +31,5 @@ public class isLineZero {
         return result;
     }
 }
+
+

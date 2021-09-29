@@ -3,10 +3,8 @@ public class InterpolasiPolinom {
         double[][] mHasil = new double[matrix.length][matrix.length+1];
         int i;
         mHasil = BacaInterpolasi.convertInterpol(matrix);
-        BacaTulisMatrix.tulis(mHasil);
         mHasil = Gauss.jordan(mHasil);
         double[] mVar = new double[mHasil.length];
-        BacaTulisMatrix.tulis(mHasil);
         for(i=0;i<mHasil.length;i++){
             mVar[i] = mHasil[i][mHasil[0].length-1];
         }
