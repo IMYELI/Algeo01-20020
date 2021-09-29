@@ -1,9 +1,9 @@
 public class sortMatrixRow {
-    public static float[][] sortMatrix(float matrix[][]){
+    public static double[][] sortMatrix(double matrix[][]){
         //sort matrix berdasarkan jumlah 0 didepannya
             int i,j,k,l,m,temp;
             int temparr[] = new int[matrix.length];
-            float tempval;
+            double tempval;
             
             for(i=0; i<matrix.length; i++){
                 temp = 0;

@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;  
 import java.io.File;
 public class BacaInterpolasi {
-    public static float[][] baca(Scanner sc){
+    public static double[][] baca(Scanner sc){
         System.out.print("Masukan banyak titik: ");
         int n = sc.nextInt();
         System.out.println("Pilihan input: ");
@@ -11,7 +11,7 @@ public class BacaInterpolasi {
         System.out.print("Pilihan: ");
         int op = sc.nextInt();
         sc.nextLine();
-        float[][] mHasil = new float[n][2];
+        double[][] mHasil = new double[n][2];
         int i;
         try{
             if(op == 1){
@@ -19,8 +19,8 @@ public class BacaInterpolasi {
                     String titik = sc.nextLine();
                     titik = titik.substring(1,titik.length()-1);
                     String[] rowTitik = titik.split(",");
-                    mHasil[i][0] = Float.parseFloat(rowTitik[0]);
-                    mHasil[i][1] = Float.parseFloat(rowTitik[1]);
+                    mHasil[i][0] = Double.parseDouble(rowTitik[0]);
+                    mHasil[i][1] = Double.parseDouble(rowTitik[1]);
                 }
 
             }else if(op == 2){
@@ -32,8 +32,8 @@ public class BacaInterpolasi {
                 while (dataReader.hasNextLine()) {  
                     String lineData = dataReader.nextLine(); //Mengambil tiap line dalam 
                     String[] rowMatrix = lineData.split(" ");
-                    mHasil[i][0] = Float.parseFloat(rowMatrix[0]);
-                    mHasil[i][1] = Float.parseFloat(rowMatrix[1]);
+                    mHasil[i][0] = Double.parseDouble(rowMatrix[0]);
+                    mHasil[i][1] = Double.parseDouble(rowMatrix[1]);
                     i++;           
                 }
                 dataReader.close(); 
@@ -48,8 +48,8 @@ public class BacaInterpolasi {
         return mHasil;
     }
 
-    public static float[][] convertInterpol(float[][] matrix){
-        float[][] mHasil = new float[matrix.length][matrix.length+1];
+    public static double[][] convertInterpol(double[][] matrix){
+        double[][] mHasil = new double[matrix.length][matrix.length+1];
         int i,j;
         for(i=0;i<matrix.length;i++){
             for(j=0;j<matrix.length +1;j++){
@@ -66,9 +66,9 @@ public class BacaInterpolasi {
         return mHasil;
     }
 
-    public static float pow(float m,int n){
+    public static double pow(double m,int n){
         int i;
-        float k;
+        double k;
         k = m;
         for(i=1;i<n;i++){
             k = k*m;
@@ -76,7 +76,7 @@ public class BacaInterpolasi {
         return k;
     }
 
-    public static void tulis(float[] mVar){
+    public static void tulis(double[] mVar){
         int i;
         boolean negatif;
         for(i=0;i<mVar.length;i++){
@@ -106,3 +106,5 @@ public class BacaInterpolasi {
     }
     
 }
+
+

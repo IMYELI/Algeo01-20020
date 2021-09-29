@@ -1,8 +1,8 @@
 public class determinanCramer {
-    public static float detKofaktor(float matrix[][]){
+    public static double detKofaktor(double matrix[][]){
         int i,j,k,m,n;
-        float temp[][] = new float [matrix.length-1][matrix.length-1];
-        float result;
+        double temp[][] = new double [matrix.length-1][matrix.length-1];
+        double result;
         result = 0;
 
         if (matrix.length == 1){
@@ -39,3 +39,5 @@ public class determinanCramer {
         return result;
     }
 }
+
+

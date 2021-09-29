@@ -1,5 +1,5 @@
 public class SPLwithGaussJordan {
-    public static boolean isRowManySolution(float[] row) {
+    public static boolean isRowManySolution(double[] row) {
         int col = 0;
         boolean isManySolution = true;
 
@@ -13,8 +13,8 @@ public class SPLwithGaussJordan {
         return isManySolution;
     }
 
-    public void SPLGaussJordan(float[][] matrix) {
-        float[][] matrixHasil;
+    public void SPLGaussJordan(double[][] matrix) {
+        double[][] matrixHasil;
         int solusi = 1, idx, row, col;
         boolean isAllNol = true, isSquare = true;
 
@@ -38,7 +38,7 @@ public class SPLwithGaussJordan {
         }
 
         if (solusi == 1) {
-            float solusiX[] = new float[col-1];
+            double solusiX[] = new double[col-1];
 
             for (idx = row - 1; idx >= 0; idx--) {
                 solusiX[idx] = matrixHasil[idx][col-1];
@@ -52,7 +52,7 @@ public class SPLwithGaussJordan {
         } else if (solusi == 2) {
             System.out.println("Tidak ada Solusi");
         } else if (solusi == 3) {
-            float[] solusiX = new float[col];
+            double[] solusiX = new double[col];
             int idxRow, idxCol, idxSol = 0;
 
             for (idxRow = 0; idxRow < row; idxRow++) {

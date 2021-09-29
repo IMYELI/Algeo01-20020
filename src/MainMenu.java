@@ -2,8 +2,8 @@ import java.util.Scanner;
 class MainMenu{
     public static void main(String[] args){
         boolean keluar = false;
-        float[][] matrix;
-        float hasilDet,taksiran,hasil;
+        double[][] matrix;
+        double hasilDet,taksiran,hasil;
         Scanner sc = new Scanner(System.in);
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
         int m,n;
@@ -45,12 +45,12 @@ class MainMenu{
                 
             }else if(pilMenu == 4){
                 matrix = BacaInterpolasi.baca(sc);
-                float[] mVar = InterpolasiPolinom.interpolasi(matrix); 
+                double[] mVar = InterpolasiPolinom.interpolasi(matrix); 
                 System.out.println("Persamaan polinomial yang terbentuk: ");
                 BacaInterpolasi.tulis(mVar);
                 System.out.println();
                 System.out.print("Masukan nilai yang ingin ditaksir: ");
-                taksiran = sc.nextFloat();
+                taksiran = sc.nextDouble();
                 hasil = InterpolasiPolinom.taksir(mVar, taksiran);
                 System.out.println("Hasil taksiran:");
                 System.out.printf("%f",hasil);
@@ -76,3 +76,4 @@ class MainMenu{
 
     }
 }
+

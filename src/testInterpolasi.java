@@ -5,18 +5,18 @@ public class testInterpolasi{
         System.out.println("Nomor 6a");
         int i,j,k;
         int balik = 1;
-        float[][] matrix = {{(float)0.1,(float)0.003},
-                            {(float)0.3,(float)0.067},
-                            {(float)0.5,(float)0.148},
-                            {(float)0.7,(float)0.248},
-                            {(float)0.9,(float)0.370},
-                            {(float)1.1,(float)0.518},
-                            {(float)1.3,(float)0.697}};
-        float raw[] = InterpolasiPolinom.interpolasi(matrix);
-        float[] expResult = {(float)0.0329,(float)0.171,(float)0.337,(float)0.677};
-        float result[] = new float[4];
-        float soal[] = {(float)0.2,(float)0.55,(float)0.85,(float)1.28};
-        float temp;
+        double[][] matrix = {{0.1,0.003},
+                            {0.3,0.067},
+                            {0.5,0.148},
+                            {0.7,0.248},
+                            {0.9,0.370},
+                            {1.1,0.518},
+                            {1.3,0.697}};
+        double raw[] = InterpolasiPolinom.interpolasi(matrix);
+        double[] expResult = {0.0329,0.171,0.337,0.677};
+        double result[] = new double[4];
+        double soal[] = {0.2,0.55,0.85,1.28};
+        double temp;
         System.out.println("");
 
         for (i=0; i<result.length; i++){
@@ -58,21 +58,21 @@ public class testInterpolasi{
         System.out.println("Nomor 6b");
         int m,n,o;
         int balik2 = 1;
-        float[][] matrix2 = {{(float)6.567,12624},
-                            {(float)7,21807},
-                            {(float)7.258,38391},
-                            {(float)7.451,54517},
-                            {(float)7.839,28228},
-                            {(float)8.161,35764},
-                            {(float)8.484,20813},
-                            {(float)8.709,12408},
-                            {(float)9,10534}};
-        float raw2[] = InterpolasiPolinom.interpolasi(matrix2);
-        float[] expResult2 = {(float)53537.7,(float)36344.3,(float)-659127,(float)27751.9};
-        float result2[] = new float[4];
-        float soal2[] = {(float)7.516,(float)8.322,(float)9.166,(float)8};
+        double[][] matrix2 = {{6.567,12624},
+                            {7,21807},
+                            {7.258,38391},
+                            {7.451,54517},
+                            {7.839,28228},
+                            {8.161,35764},
+                            {8.484,20813},
+                            {8.709,12408},
+                            {9,10534}};
+        double raw2[] = InterpolasiPolinom.interpolasi(matrix2);
+        double[] expResult2 = {53537.7,36344.3,-659127,27751.9};
+        double result2[] = new double[4];
+        double soal2[] = {7.516,8.322,9.166,8};
         //masukan user adalah tanggal 31 Juli 2021 (tanggal file dibuat)
-        float temp2;
+        double temp2;
         System.out.println("");
 
         for (m=0; m<result2.length; m++){
@@ -109,13 +109,13 @@ public class testInterpolasi{
         int x,y;
         int balik3 = 1;
         //melakukan tes untuk interpolasi derajat 5 seperti di soal
-        float[][] matrix3 = {{(float)0.4,(float)0.4188},
-                             {(float)0.8,(float)0.5071},
-                             {(float)1.2,(float)0.5609},
-                             {(float)1.6,(float)0.5836},
-                             {(float)2.0,(float)0.5766}};
-        float result3[] = InterpolasiPolinom.interpolasi(matrix3);
-        float[] expResult3 = {(float)0.2906,(float)0.376125,(float)-0.147292,(float)0.021875,(float)-0.003255};
+        double[][] matrix3 = {{0.4,0.4188},
+                             {0.8,0.5071},
+                             {1.2,0.5609},
+                             {1.6,0.5836},
+                             {2.0,0.5766}};
+        double result3[] = InterpolasiPolinom.interpolasi(matrix3);
+        double[] expResult3 = {0.2906,0.376125,-0.147292,0.021875,-0.003255};
 
         for (x=0; x<result3.length; x++){
             if (result3[x]<0){

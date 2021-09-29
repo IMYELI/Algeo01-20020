@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.FileNotFoundException; 
 import java.io.File;
 public class BacaRegresi {
-    public static float[][] baca(Scanner sc){
+    public static double[][] baca(Scanner sc){
         int n,jumlah,op;
         int i,j,k,l;
         System.out.print("Masukan jumlah peubah x yang diinginkan: ");
@@ -16,7 +16,7 @@ public class BacaRegresi {
         System.out.println("2. File");
         System.out.print("Pilihan: ");
         op = sc.nextInt();
-        float[][] matrix = new float[n+1][jumlah];
+        double[][] matrix = new double[n+1][jumlah];
 
         try{
             if(op == 1){                    //INPUT MANUAL
@@ -27,7 +27,7 @@ public class BacaRegresi {
                         System.out.println("Masukan nilai Y:");
                     }
                     for(l=0;l<jumlah;l++){
-                        matrix[k][l] = sc.nextFloat();
+                        matrix[k][l] = sc.nextDouble();
                     }
                 }
             }else if(op == 2){          //INPUT FILE
@@ -40,7 +40,7 @@ public class BacaRegresi {
                     String lineData = dataReader.nextLine(); //Mengambil tiap line dalam 
                     String[] rowMatrix = lineData.split(" ");
                     for(j=0;j<matrix.length;j++){
-                        matrix[(j+n)%(n+1)][i] = Float.parseFloat(rowMatrix[j]);
+                        matrix[(j+n)%(n+1)][i] = Double.parseDouble(rowMatrix[j]);
                     }
                     i++;
                 }
@@ -55,8 +55,8 @@ public class BacaRegresi {
         return matrix;
     }
 
-    public static float[][] convertKali(float[][] matrix){      //Membuat menjadi bentuk utama matrix
-        float[][] mHasil = new float[matrix.length+1][matrix.length];
+    public static double[][] convertKali(double[][] matrix){      //Membuat menjadi bentuk utama matrix
+        double[][] mHasil = new double[matrix.length+1][matrix.length];
         int i,j,k;
         for(i=0;i<matrix.length+1;i++){
             for(j=0;j<matrix.length;j++){
@@ -81,7 +81,7 @@ public class BacaRegresi {
                 }
             }
         }
-        float[][] mPalingHasil = new float[matrix.length][matrix.length+1];
+        double[][] mPalingHasil = new double[matrix.length][matrix.length+1];
         for(i=0;i<mPalingHasil.length;i++){
             for(j=0;j<mPalingHasil[0].length;j++){
                 if(j == mPalingHasil[0].length-1){
@@ -94,7 +94,7 @@ public class BacaRegresi {
         return mPalingHasil;
     }
 
-    public static void tulis(float[][] matrix){
+    public static void tulis(double[][] matrix){
         int i;
         boolean negatif;
         for(i=0;i<matrix.length;i++){
@@ -120,3 +120,5 @@ public class BacaRegresi {
         }
     }
 }
+
+

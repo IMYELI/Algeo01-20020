@@ -1,10 +1,10 @@
 import java.util.Scanner; 
 public class inversMatrix{
-    public static float[][] invers(float[][] matrix, Scanner read){
+    public static double[][] invers(double[][] matrix, Scanner read){
         int pilMenu;
         boolean kembali = false;
-        float determinan = determinanCramer.detKofaktor(matrix);
-        float[][] hasilinversMatrix;
+        double determinan = determinanCramer.detKofaktor(matrix);
+        double[][] hasilinversMatrix;
 
         while(!kembali){
             System.out.println("Pilihan menu invers: ");
@@ -35,3 +35,4 @@ public class inversMatrix{
         return matrix;
     }
 }
+

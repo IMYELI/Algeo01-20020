@@ -1,5 +1,5 @@
 public class isLineZero {
-    public static int isZero(float matrix[][]){
+    public static int isZero(Double matrix[][]){
         int i,j,result,count;
         
         result = 0;

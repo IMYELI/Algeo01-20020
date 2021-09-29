@@ -1,9 +1,9 @@
 public class Gauss {
 
-    public static float[][] sortRowMatrix (float[][] matrix, int row){
+    public static double[][] sortRowMatrix (double[][] matrix, int row){
         int idxRow;
         boolean sorted = true;
-        float[][] copyMatrix = BacaTulisMatrix.copy(matrix);
+        double[][] copyMatrix = BacaTulisMatrix.copy(matrix);
         while(!sorted){
             sorted = true;
             for (idxRow = row; idxRow < matrix.length - 1; idxRow++) {
@@ -19,15 +19,15 @@ public class Gauss {
         return matrix;
     }
 
-    public static float[][] gauss(float[][] matrix){
-        float[][] copyM = new float[matrix.length][matrix[0].length];
+    public static double[][] gauss(double[][] matrix){
+        double[][] copyM = new double[matrix.length][matrix[0].length];
         copyM = BacaTulisMatrix.copy(matrix);
         int i,j,k,m,n,o;
-        float tag;
+        double tag;
 
         for(j=0;j<matrix.length;j++){
-            matrix = sortRowMatrix(copyM, j); //Mengesort idx bukan nol pertama terurut membesar
-            k = BacaTulisMatrix.idxNot0(matrix, j);
+            copyM = sortRowMatrix(copyM, j); //Mengesort idx bukan nol pertama terurut membesar
+            k = BacaTulisMatrix.idxNot0(copyM, j);
             for(m=k;m<matrix.length;m++){
                 tag = copyM[m][k];              //Pembagi untuk setiap baris
                 for(n=k;n<copyM[0].length;n++){     
@@ -36,6 +36,8 @@ public class Gauss {
                     } 
                 }
             }
+            BacaTulisMatrix.tulis(copyM);
+            System.out.println();
             for(i=k;i<matrix.length-1;i++){
                 for(o=k;o<copyM[0].length;o++){
                     if(copyM[i+1][o] != 0 || o>k){
@@ -44,13 +46,15 @@ public class Gauss {
                    
                 }
             }
+            BacaTulisMatrix.tulis(copyM);
+            System.out.println();
         }
         return copyM;
     } 
-    public static float[][] jordan(float[][] matrix){
-        float[][] copyM = Gauss.gauss(matrix);
+    public static double[][] jordan(double[][] matrix){
+        double[][] copyM = Gauss.gauss(matrix);
         int i,j,k,o;
-        float tag;
+        double tag;
         //PENERAPAN METODE GAUSS-JORDAN
         k=matrix.length-1;
         for(j=matrix[0].length-1;j>0;j--){
@@ -65,7 +69,11 @@ public class Gauss {
                 }
             }
             k--;
+            BacaTulisMatrix.tulis(copyM);
+            System.out.println();
         }
         return copyM;
     }
 }
+
+

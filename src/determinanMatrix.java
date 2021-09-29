@@ -1,9 +1,9 @@
 import java.util.Scanner;
 public class determinanMatrix {
-    public static float determinan(float[][] matrix, Scanner read){
+    public static double determinan(double[][] matrix, Scanner read){
         int pilMenu;
-        float result = 0;
-        float[][] temp = BacaTulisMatrix.copy(matrix);
+        double result = 0;
+        double[][] temp = BacaTulisMatrix.copy(matrix);
         boolean kembali = false;
         while(!kembali){
             System.out.println("Pilihan menu determinan: ");
@@ -14,8 +14,8 @@ public class determinanMatrix {
             pilMenu = read.nextInt();
             if(pilMenu == 1){
                 int i,j,k,l,m,cont,same,iszero;
-                float temparr[][];
-                float tempval;
+                double temparr[][];
+                double tempval;
         
                 temparr = sortMatrixRow.sortMatrix(temp);
                 result = 1;
@@ -66,7 +66,7 @@ public class determinanMatrix {
 
             else if (pilMenu == 2){
                 int i,j,k,m,n;
-                float temp2[][] = new float [temp.length-1][temp.length-1];
+                double temp2[][] = new double [temp.length-1][temp.length-1];
                 result = 0;
         
                 if (temp.length == 1){
@@ -118,3 +118,5 @@ public class determinanMatrix {
         }
     }
     
+
+

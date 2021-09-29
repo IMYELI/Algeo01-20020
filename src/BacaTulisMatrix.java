@@ -14,20 +14,20 @@ public class BacaTulisMatrix {
         this.m = m;
         this.n = n;
     }
-    public float[][] baca(Scanner readOp) {  
+    public double[][] baca(Scanner readOp) {  
         System.out.println("Pilihan input: ");
         System.out.println("1. Keyboard");
         System.out.println("2. file");
         System.out.print("Pilihan: ");
         int op = readOp.nextInt();
-        float[][] matrix = new float[this.m][this.n];
+        double[][] matrix = new double[this.m][this.n];
         int i = 0;
         int j;
         try { 
             if(op == 1){
                 for(i=0;i<this.m;i++){
                     for(j=0;j<this.n;j++){
-                            matrix[i][j] = readOp.nextFloat();              
+                            matrix[i][j] = readOp.nextDouble();              
                         }
                     }
 
@@ -40,7 +40,7 @@ public class BacaTulisMatrix {
                     String lineData = dataReader.nextLine(); //Mengambil tiap line dalam file
                     String[] rowMatrix = lineData.split(" ",0);
                     for(j = 0;j<rowMatrix.length;j++){
-                        matrix[i][j] = Float.parseFloat(rowMatrix[j]);
+                        matrix[i][j] = Double.parseDouble(rowMatrix[j]);
                     }
                     i++;                  
                 }
@@ -55,7 +55,7 @@ public class BacaTulisMatrix {
         return matrix; 
     }  
 
-    public static void tulis(float[][] matrix){
+    public static void tulis(double[][] matrix){
         int i,j;
         for(i=0;i<matrix.length;i++){
             for(j=0;j<matrix[0].length;j++){
@@ -68,8 +68,8 @@ public class BacaTulisMatrix {
         }
     }
 
-    public static float[][] copy(float[][] matrix){
-        float[][] matrix2 = new float[matrix.length][matrix[0].length];
+    public static double[][] copy(double[][] matrix){
+        double[][] matrix2 = new double[matrix.length][matrix[0].length];
         int i,j;
         for(i=0;i<matrix.length;i++){
             for(j=0;j<matrix[0].length;j++){
@@ -79,8 +79,8 @@ public class BacaTulisMatrix {
         return matrix2;
     }
 
-    public static float[][] transpose(float[][] matrix){
-        float[][] matrix2 = new float[matrix.length][matrix[0].length];
+    public static double[][] transpose(double[][] matrix){
+        double[][] matrix2 = new double[matrix.length][matrix[0].length];
         int i = 0;
         int j = 0;
         while(i<matrix.length){
@@ -94,7 +94,7 @@ public class BacaTulisMatrix {
         return matrix2;
     }
 
-    public static int idxNot0(float[][] matrix,int i){
+    public static int idxNot0(double[][] matrix,int i){
         int j;
         int idx = 0;
         for(j=0;j<matrix[0].length;j++){
@@ -106,8 +106,8 @@ public class BacaTulisMatrix {
         return idx;
     }
 
-    public static float[][] swapRow(float[][] matrix, int i){
-        float[][] copyM = BacaTulisMatrix.copy(matrix);
+    public static double[][] swapRow(double[][] matrix, int i){
+        double[][] copyM = BacaTulisMatrix.copy(matrix);
         int j;
         for(j=0;j<matrix[0].length;j++){
             matrix[i][j] = copyM[i+1][j];
@@ -115,10 +115,12 @@ public class BacaTulisMatrix {
         }
         return matrix;
     }
-    public static void tulis1D(float[] matrix){
+    public static void tulis1D(double[] matrix){
         int i;
         for(i=0;i<matrix.length;i++){
             System.out.printf("%f ",matrix[i]);
         }
     }
 }  
+
+

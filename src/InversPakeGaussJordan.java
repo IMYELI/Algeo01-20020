@@ -1,9 +1,9 @@
 public class InversPakeGaussJordan {
-    public static float[][] InversGaussJordan(float[][] matrix) {
+    public static double[][] InversGaussJordan(double[][] matrix) {
         int i,j;
-        float[][] id = new float[matrix.length][matrix.length];
+        double[][] id = new double[matrix.length][matrix.length];
         id = IdentitasGenerator.generate(matrix.length);
-        float[][] copyM = new float[matrix.length][matrix.length*2];
+        double[][] copyM = new double[matrix.length][matrix.length*2];
         //Menambahkan matriks identitas di kanan matriks yang akan dicari inversnya
         for(i=0;i<matrix.length;i++){
             for(j=0;j<matrix.length*2;j++){
@@ -26,3 +26,5 @@ public class InversPakeGaussJordan {
         return matrix;
     }
 }
+
+

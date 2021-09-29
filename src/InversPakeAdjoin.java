@@ -1,8 +1,8 @@
 public class InversPakeAdjoin {
-    public static float[][] InversAdjoin(float[][] matrix,float determinan) {
+    public static double[][] InversAdjoin(double[][] matrix,double determinan) {
         int row ,col,rowIn,colIn,i,j;
-        float[][] tmp2 = BacaTulisMatrix.copy(matrix);
-        float[][] tmp = new float[matrix.length-1][matrix[0].length-1];
+        double[][] tmp2 = BacaTulisMatrix.copy(matrix);
+        double[][] tmp = new double[matrix.length-1][matrix[0].length-1];
 
         //MEMBUAT ADJOIN
         for(row=0;row<matrix.length;row++){
@@ -19,9 +19,7 @@ public class InversPakeAdjoin {
                             }
                         }
 
-
                     }
-
 
                 }
                 if((row+col)%2 == 0){
@@ -42,3 +40,5 @@ public class InversPakeAdjoin {
         return matrix;
     }
 }
+
+

@@ -1,6 +1,6 @@
 public class IdentitasGenerator {
-    public static float[][] generate(int m){
-        float[][] mId = new float[m][m];
+    public static double[][] generate(int m){
+        double[][] mId = new double[m][m];
         int i,j;
         for(i = 0;i<m;i++){
             for(j=0;j<m;j++){

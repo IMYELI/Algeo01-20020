@@ -1,5 +1,5 @@
 public class isRowSame {
-    public static int isSame(float matrix[][]){
+    public static int isSame(double matrix[][]){
         int i,j,k,result,count;
         
         result = 0;
@@ -20,3 +20,5 @@ public class isRowSame {
         return result;
     }
 }
+
+

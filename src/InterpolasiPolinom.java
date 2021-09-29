@@ -1,11 +1,11 @@
 public class InterpolasiPolinom {
-    public static float[] interpolasi(float[][] matrix){
-        float[][] mHasil = new float[matrix.length][matrix.length+1];
+    public static double[] interpolasi(double[][] matrix){
+        double[][] mHasil = new double[matrix.length][matrix.length+1];
         int i;
         mHasil = BacaInterpolasi.convertInterpol(matrix);
         BacaTulisMatrix.tulis(mHasil);
         mHasil = Gauss.jordan(mHasil);
-        float[] mVar = new float[mHasil.length];
+        double[] mVar = new double[mHasil.length];
         BacaTulisMatrix.tulis(mHasil);
         for(i=0;i<mHasil.length;i++){
             mVar[i] = mHasil[i][mHasil[0].length-1];
@@ -14,9 +14,9 @@ public class InterpolasiPolinom {
         return mVar;
     }
 
-    public static float taksir(float[] matrix,float taksiran){
+    public static double taksir(double[] matrix,double taksiran){
         int i;
-        float hasil = matrix[0];
+        double hasil = matrix[0];
         for(i=1;i<matrix.length;i++){
             hasil = hasil + (matrix[i]*BacaInterpolasi.pow(taksiran,i));
         }
@@ -24,3 +24,5 @@ public class InterpolasiPolinom {
     }
 
 }
+
+

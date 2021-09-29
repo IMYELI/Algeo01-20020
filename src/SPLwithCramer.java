@@ -1,22 +1,22 @@
 public class SPLwithCramer {
 
-    public static void SPLCramer(float[][] matrix) {
+    public static void SPLCramer(double[][] matrix) {
         int newRow = OperasiMatrix.getRow(matrix), newCol = OperasiMatrix.getCol(matrix) - 1;
 
-        float[][] matrixA = OperasiMatrix.makeMatrixA(matrix, newRow, newCol);
-        float[][] matrixB = OperasiMatrix.makeMatrixB(matrix, newRow, newCol);
-        float[][] temp = BacaTulisMatrix.copy(matrixA);
+        double[][] matrixA = OperasiMatrix.makeMatrixA(matrix, newRow, newCol);
+        double[][] matrixB = OperasiMatrix.makeMatrixB(matrix, newRow, newCol);
+        double[][] temp = BacaTulisMatrix.copy(matrixA);
 
         int colA = OperasiMatrix.getCol(matrixA);
-        float determinan = determinanCramer.detKofaktor(matrixA);
+        double determinan = determinanCramer.detKofaktor(matrixA);
     
         if (OperasiMatrix.isSquare(matrixA) && determinan != 0) {
             int idxCol;
             System.out.println("Solusinya sebagai berikut : ");
             for (idxCol = 0; idxCol < colA; idxCol++) {
                 OperasiMatrix.changeCol(temp, matrixB, idxCol);
-                float detTemp = determinanCramer.detKofaktor(temp);
-                float x = detTemp/determinan;
+                double detTemp = determinanCramer.detKofaktor(temp);
+                double x = detTemp/determinan;
                 System.out.format("X%o = %.2f", (idxCol+1), x);
                 System.out.println();
                 temp = BacaTulisMatrix.copy(matrixA);

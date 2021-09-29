@@ -1,8 +1,8 @@
 public class determinanGauss {
-    public static float detGauss (float matrix[][]){
+    public static double detGauss (double matrix[][]){
         int i,j,k,l,m,cont,same,iszero;
-        float temparr[][];
-        float result,temp;
+        double temparr[][];
+        double result,temp;
 
         temparr = sortMatrixRow.sortMatrix(matrix);
         result = 1;
@@ -49,3 +49,5 @@ public class determinanGauss {
         
     }
 }
+
+
