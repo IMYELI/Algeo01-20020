@@ -21,7 +21,7 @@ public class SPLwithInvers {
             } else if (!isNol && determinan != 0) {
 
                     double[][] matrixInversA = InversPakeAdjoin.InversAdjoin(matrixA, determinan);
-                    double[][] matrixHasil = OperasiMatrix.mutiplyMatrix(matrixInversA, matrixB, rowA, colB);
+                    double[] matrixHasil = OperasiMatrix.mutiplyMatrix(matrixInversA, matrixB, rowA, colB);
                     mPalingHasil = convert1D(matrixHasil);
                     // tulis(matrixHasil);
                     

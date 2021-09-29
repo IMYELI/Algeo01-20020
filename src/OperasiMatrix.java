@@ -1,3 +1,5 @@
+
+
 public class OperasiMatrix {
     // Membuat matrix A
     public static double[][] makeMatrixA(double[][] matrix, int row, int col) {
@@ -53,22 +55,19 @@ public class OperasiMatrix {
         return isNol;
     }
     // Mengkalikan matirx
-    public static double[][] mutiplyMatrix (double[][] matrixA, double[][] matrixB, int row, int col) {
-        int rowHasil = row, colHasil = col, idxRow, idxCol, idxPlus;
-        double[][] matrixHasil = new double[rowHasil][colHasil];
+    public static double[] mutiplyMatrix (double[][] matrixA, double[][] matrixB, int row, int col) {
+        int rowHasil = row, idxRow, idxPlus;
+        double[] matrixHasil = new double[rowHasil];
+
 
         for (idxRow = 0; idxRow < rowHasil; idxRow++) {
-            int idxTemp = 0;
-            for (idxCol = 0; idxCol < colHasil; idxCol++) {
                 double temp = 0;
                 int idxTempPlus = idxRow;
-                for (idxPlus = 0; idxPlus < matrixA[0].length; idxPlus++) {
-                    temp += matrixA[idxTempPlus][idxPlus]*matrixB[idxPlus][idxTemp];
+                for (idxPlus = 0; idxPlus < rowHasil; idxPlus++) {
+                    temp += matrixA[idxTempPlus][idxPlus]*matrixB[idxPlus][0];
                 }
-                matrixHasil[idxRow][idxCol] = temp;
-                idxTemp++;
+                matrixHasil[idxRow] = temp;
             }
-        }
         return matrixHasil;
     }
     public static void changeCol(double[][] matrixA, double[][] matrixB, int col) {
@@ -77,6 +76,51 @@ public class OperasiMatrix {
         for (idxRow = 0; idxRow < row; idxRow++) {
             matrixA[idxRow][col] = matrixB[idxRow][0];
         }
+    }
+    public static boolean isNotSolution(double[][] matrix) {
+        boolean isNot = true;
+        int idx, col = getCol(matrix), row = getRow(matrix);
+
+        for (idx = 0; idx < col-1; idx++) {
+            if (matrix[row-1][idx] != 0) {
+                isNot = false;
+            }
+        }
+        if (matrix[row-1][col-1] != 0) {
+            isNot = false;
+        }
+        return isNot;
+    }
+    public static boolean isAllNol(double[][] matrix) {
+        boolean isAll = true;
+        int idx, col = getCol(matrix), row = getRow(matrix);
+
+        for (idx = 0; idx < col; idx++) {
+            if (matrix[row-1][idx] != 0) {
+                isAll = false;
+            }
+        }
+        return isAll;
+    }
+    public static boolean isSingleVar (double[][] matrix, int row, int first) {
+        boolean isSingleVar = true;
+        int idx, col = getCol(matrix);
+
+        for (idx = first + 1; idx < col - 1; idx++) {
+            if (matrix[row][idx] != 0 ) {
+                isSingleVar = false;
+            }
+        }
+        return isSingleVar;
+    }
+    public static boolean syarat (double[][] matrix, String[] solusi, int idxRow, int idxCek) {
+        boolean yes = false;
+        if (matrix[idxRow][idxCek] != 0) {
+            if (solusi[idxCek] != "") {
+                yes = true;
+            }
+        }
+        return yes;
     }
 }
 
