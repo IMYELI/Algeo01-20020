@@ -84,8 +84,14 @@ public class testInterpolasi{
         }
 
         for (o=0; o<result2.length; o++){
-            if(result2[o]>expResult2[o]+100 || result2[o]<expResult2[o]-100){
-                balik2 = 0;
+            if (result2[o]<0){
+                if (result2[o]<1.05*expResult2[o] || result2[o]>0.95*expResult2[o]){
+                    balik = 0;
+                }
+            } else {
+                if (result2[o]>1.05*expResult2[o] || result2[o]<0.95*expResult2[o]){
+                    balik = 0;
+                }
             }
         }
 
