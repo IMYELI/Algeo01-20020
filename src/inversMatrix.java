@@ -4,7 +4,7 @@ public class inversMatrix{
         int pilMenu;
         boolean kembali = false;
         double determinan = determinanCramer.detKofaktor(matrix);
-        double[][] hasilinversMatrix;
+        double[][] hasilinversMatrix = BacaTulisMatrix.copy(matrix);
 
         while(!kembali){
             System.out.println("Pilihan menu invers: ");
@@ -27,7 +27,7 @@ public class inversMatrix{
                 BacaTulisMatrix.tulis(hasilinversMatrix);
             }else if(pilMenu == 3){
                 kembali = true;
-                return matrix;
+                return hasilinversMatrix;
             }else{
                 System.out.println("Pilihan menu tidak valid");
             }

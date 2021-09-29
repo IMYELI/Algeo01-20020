@@ -2,7 +2,7 @@ public class Gauss {
 
     public static double[][] sortRowMatrix (double[][] matrix, int row){
         int idxRow;
-        boolean sorted = true;
+        boolean sorted = false;
         double[][] copyMatrix = BacaTulisMatrix.copy(matrix);
         while(!sorted){
             sorted = true;
@@ -24,6 +24,7 @@ public class Gauss {
         copyM = BacaTulisMatrix.copy(matrix);
         int i,j,k,m,n,o;
         double tag;
+        boolean lock;
 
         for(j=0;j<matrix.length;j++){
             copyM = sortRowMatrix(copyM, j); //Mengesort idx bukan nol pertama terurut membesar
@@ -38,11 +39,14 @@ public class Gauss {
             }
 
             for(i=k;i<matrix.length-1;i++){
+                lock = false;
                 for(o=k;o<copyM[0].length;o++){
-                    if(copyM[i+1][o] != 0 || o>k){
-                        copyM[i+1][o] = copyM[i+1][o] - copyM[k][o];    //Pengurangan dengan baris paling atas yang bernilai 1
+                    if(copyM[i+1][k] != 0 && o==k){
+                        lock = true;               //Istri minta gembok
                     }
-                   
+                    if (lock){
+                        copyM[i+1][o] = copyM[i+1][o] - copyM[k][o];  //Pengurangan dengan baris paling atas yang bernilai 1
+                    }
                 }
             }
         }
@@ -66,6 +70,7 @@ public class Gauss {
                 }
             }
             k--;
+
         }
         return copyM;
     }

@@ -9,7 +9,7 @@ public class test {
         matrix = bacaMat.baca(sc);
         BacaTulisMatrix.tulis(matrix);
         System.out.println();
-        SPLwithInvers.SPLInvers(matrix);
+        SPLwithCramer.SPLCramer(matrix);
 
         /*
         int newRow = matrix.length, newCol = matrix[0].length - 1;    

@@ -1,7 +1,8 @@
 import java.io.File;   
 import java.io.FileNotFoundException;    
-import java.util.Scanner; 
-   
+import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
 public class BacaTulisMatrix {  
     private int m;
     private int n;
@@ -120,6 +121,26 @@ public class BacaTulisMatrix {
         for(i=0;i<matrix.length;i++){
             System.out.printf("%f ",matrix[i]);
         }
+    }
+    public static void rekamMatrixToString(double[][] matrix, FileWriter rekam){
+        int i,j;
+        String hasil = "";
+        for(i=0;i<matrix.length;i++){
+            for(j=0;j<matrix[0].length;j++){
+                hasil += matrix[i][j];
+                if(j!=matrix[0].length-1){
+                    hasil += " ";
+                }else{
+                    hasil += "\n";
+                }
+            }
+        }
+        try{
+            rekam.write(hasil);
+        }catch(IOException e){
+
+        }
+        
     }
 }  
 

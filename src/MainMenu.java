@@ -1,14 +1,26 @@
 import java.util.Scanner;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 class MainMenu{
     public static void main(String[] args){
         boolean keluar = false;
         double[][] matrix;
-        
         double hasilDet,taksiran,hasil;
         Scanner sc = new Scanner(System.in);
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
         int m,n,flag,i;
         boolean stop = false;
+        String tulis;
+        String path = System.getProperty("user.dir");
+        Path dir = Paths.get(path).getParent();
+        dir = Paths.get(dir.toString(),"test");
+
+        try{
+            FileWriter rekam = new FileWriter(dir + "\\rekaman.txt");
+            rekam.write("Matrix yang diinput: \n");
+
         while (!keluar){
             
             System.out.println("MAIN MENU: ");
@@ -22,7 +34,6 @@ class MainMenu{
             System.out.print("Pilihan menu: ");
 
             int pilMenu = sc.nextInt();
-        
             if(pilMenu == 1){
                 
             }else if(pilMenu == 2){
@@ -39,11 +50,13 @@ class MainMenu{
                 m = sc.nextInt();
                 bacaMat.setMatSquare(m);
                 matrix = bacaMat.baca(sc);
+                BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
+                rekam.write("\n\nMatrix setelah diinverse:\n");
                 System.out.println("\nMatrix yang anda input: ");
                 BacaTulisMatrix.tulis(matrix);
                 matrix = inversMatrix.invers(matrix,sc);
-                System.out.println("\nMatrix hasil invers: ");
-                BacaTulisMatrix.tulis(matrix);  
+                BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
+                
                 
             }else if(pilMenu == 4){
                 matrix = BacaInterpolasi.baca(sc);
@@ -98,7 +111,10 @@ class MainMenu{
             }else{
                 System.out.println("Pilihan menu tidak valid");
             }      
-            
+            rekam.close();
+        }
+        }catch(IOException e){
+            System.out.println("Ada error");
         }
         sc.close();
         
