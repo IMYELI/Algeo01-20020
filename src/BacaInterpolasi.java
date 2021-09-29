@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.io.FileNotFoundException;  
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 public class BacaInterpolasi {
     public static double[][] baca(Scanner sc){
         System.out.print("Masukan banyak titik: ");
@@ -104,7 +106,42 @@ public class BacaInterpolasi {
             
         }
     }
-    
+
+    public static void tulisRekam(double[] mVar,FileWriter rekam){
+        int i;
+        boolean negatif;
+        String hasil = "";
+        for(i=0;i<mVar.length;i++){
+            negatif = false;
+            if(i == 0){
+                hasil += "Y = ";
+            }
+            if(i<mVar.length-2){
+                if(mVar[i+1]<0){
+                    negatif = true;
+                }
+            }
+            if(i>1 && mVar[i] != 0){
+                hasil += " " + Double.toString(mVar[i]) + "x^" + Integer.toString(i) + " ";
+            }else if(i==1){
+                hasil += " " + Double.toString(mVar[i]) +"x ";
+            }else if(i==0){
+                hasil += " " + Double.toString(mVar[i]) + " ";
+            }
+            if(i<mVar.length-2){
+                if(!negatif && mVar[i+1] != 0){
+                    hasil += "+";
+                }
+            }
+            
+        }
+        try{
+            rekam.write(hasil);
+        }catch(IOException e){
+
+        }
+        
+    }
 }
 
 

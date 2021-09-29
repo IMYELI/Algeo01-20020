@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.io.FileNotFoundException; 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 public class BacaRegresi {
     public static double[][] baca(Scanner sc){
         int n,jumlah,op;
@@ -137,6 +139,56 @@ public class BacaRegresi {
             akhir = akhir + hasil[i]*taksiran[i-1]; 
         }
         return akhir;
+    }
+
+    public static void tulisRekam(double[][] matrix,FileWriter rekam){
+        int i;
+        boolean negatif;
+        String hasil = "";
+        for(i=0;i<matrix.length;i++){
+            
+            negatif = false;
+            if(i==0){
+                hasil += "Y = ";
+            }
+            if(i==0){
+                hasil += Double.toString(matrix[i][matrix[0].length-1]);
+            }else{
+                hasil += " " + Double.toString(matrix[i][matrix[0].length-1]) + Integer.toString(i)+" ";
+            }
+            if(i<matrix.length-2){
+                if(matrix[i+1][matrix[0].length-1]<0){
+                    negatif = true;
+            }
+            
+            }
+            if (i!= matrix.length-1 && !negatif){
+                hasil += "+";
+                
+            }
+            
+        }
+        try{
+            rekam.write(hasil);
+        }catch(IOException e){
+
+        }
+    }
+    public static void rekamHasil(double[] matrix, FileWriter rekam){
+        int i;
+        String hasil = "F(";
+        for(i=0;i<matrix.length;i++){
+            hasil += Double.toString(matrix[i]);
+            if(i != matrix.length-1){
+                hasil += ",";
+            }
+        }
+        hasil += ") = ";
+        try{
+            rekam.write(hasil);
+        }catch(IOException e){
+
+        }
     }
 }
 
