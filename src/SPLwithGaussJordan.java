@@ -2,7 +2,7 @@
 
 public class SPLwithGaussJordan {
 
-    public void SPLGaussJordan(double[][] matrix) {
+    public static void SPLGaussJordan(double[][] matrix) {
         int row = OperasiMatrix.getRow(matrix), col = OperasiMatrix.getCol(matrix);
 
         double[][] matrixHasil = Gauss.jordan(matrix);
