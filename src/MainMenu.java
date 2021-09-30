@@ -120,7 +120,7 @@ class MainMenu{
                 rekam.write("\n\n");
                 double[] mVar = BacaRegresi.ubah1D(matrix);
                 System.out.println();
-                double[] taksiranRegresi = new double[mVar.length];
+                double[] taksiranRegresi = new double[mVar.length-1];
                 while(!stop){
                     System.out.print("Masukan nilai yang ingin ditaksir: \n");
                     for(i=0;i<mVar.length-1;i++){
