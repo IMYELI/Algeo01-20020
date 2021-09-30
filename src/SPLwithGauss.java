@@ -2,7 +2,7 @@ public class SPLwithGauss {
     public static void SPLGauss(double[][] matrix) {
         int row = OperasiMatrix.getRow(matrix), col = OperasiMatrix.getCol(matrix);
 
-        double[][] matrixHasil = Gauss.jordan(matrix);
+        double[][] matrixHasil = Gauss.gauss(matrix);
         double[][] matrixCekSolusi = matrixHasil;
         double[][] matrixCek = OperasiMatrix.makeMatrixA(matrixHasil, row, col-1);
 

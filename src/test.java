@@ -5,10 +5,11 @@ public class test {
         
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
         double[][] matrix;
-        bacaMat.setMat(6,5);
+        bacaMat.setMat(3,7);
         matrix = bacaMat.baca(sc);
         BacaTulisMatrix.tulis(matrix);
         System.out.println();
+        
         double[][] matrixHasil = Gauss.gauss(matrix);
         BacaTulisMatrix.tulis(matrixHasil);
         /*

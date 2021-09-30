@@ -36,28 +36,23 @@ public class SPLMenu{
         
                 if (solusi == 1) {
                     double solusiX[] = HasilSPL.HasilUnikGauss(matrixHasil);
-                    
                     rekam.write("Solusi dari persamaan: \n\n");
                     System.out.println("Solusinya sebagai berikut : ");
         
                     int idxCol;           
                     for (idxCol = 0; idxCol < col - 1; idxCol++) {
-                        System.out.format("X%d = %.2f %n", (idxCol+1), solusiX[idxCol]);
-
-                        rekam.write("x" + Integer.toString(idxCol+1) + Double.toString(solusiX[idxCol]) + "\n");
-                        
+                        System.out.format("X%o = %.2f %n", (idxCol+1), solusiX[idxCol]);
                     }
                 } else if (solusi == 2) {
                     System.out.println("Tidak ada Solusi");
-                    rekam.write("Tidak ada solusi");
                 }  else if (solusi == 3) {
                     String[] solusiX = HasilSPL.HasilGakUnik(matrixHasil);
-                    rekam.write("Solusi dari persamaan: \n\n");
+                    
                     System.out.println("Solusinya sebagai berikut : ");
         
                     int idxCol;
                     for (idxCol = 0; idxCol < col - 1; idxCol++) {
-                        System.out.format("X%d = %s %n", (idxCol+1), solusiX[idxCol]);
+                        System.out.format("X%o = %s %n", (idxCol+1), solusiX[idxCol]);
                         rekam.write("X" + Integer.toString(idxCol+1) + " = " + solusiX[idxCol] + "\n");
                     }
                 }
@@ -65,7 +60,7 @@ public class SPLMenu{
             }else if(pilMenu == 2){
                 int row = OperasiMatrix.getRow(matrix), col = OperasiMatrix.getCol(matrix);
 
-                double[][] matrixHasil = Gauss.gauss(matrix);
+                double[][] matrixHasil = Gauss.jordan(matrix);
                 double[][] matrixCekSolusi = matrixHasil;
                 double[][] matrixCek = OperasiMatrix.makeMatrixA(matrixHasil, row, col-1);
         
@@ -79,25 +74,25 @@ public class SPLMenu{
         
                 if (solusi == 1) {
                     double solusiX[] = HasilSPL.HasilUnikJordan(matrixHasil);
-                    
-                    System.out.println("Solusinya sebagai berikut : ");
+        
                     rekam.write("Solusi dari persamaan: \n\n");
+                    System.out.println("Solusinya sebagai berikut : ");
+        
                     int idxCol;
                     for (idxCol = 0; idxCol < col - 1; idxCol++) {
-                        System.out.format("X%d = %.2f %n", (idxCol+1), solusiX[idxCol]);
-                        rekam.write("X" + Integer.toString(idxCol + 1) + " = " + Double.toString(solusiX[idxCol]) + "\n");
+                        System.out.format("X%o = %.2f %n", (idxCol+1), solusiX[idxCol]);
                     }
                 } else if (solusi == 2) {
                     System.out.println("Tidak ada Solusi");
-                    rekam.write("Tidak ada solusi\n");
                 } else if (solusi == 3) {
                     String[] solusiX = HasilSPL.HasilGakUnik(matrixHasil);
+
                     rekam.write("Solusi dari persamaan: \n\n");
                     System.out.println("Solusinya sebagai berikut : ");
-                    
+        
                     int idxCol;
                     for (idxCol = 0; idxCol < col - 1; idxCol++) {
-                        System.out.format("X%d = %s %n", (idxCol+1), solusiX[idxCol]);
+                        System.out.format("X%o = %s %n", (idxCol+1), solusiX[idxCol]);
                         rekam.write("X" + Integer.toString(idxCol + 1) + " = " + solusiX[idxCol] + "\n");
                     }
                 }

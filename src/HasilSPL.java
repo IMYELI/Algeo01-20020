@@ -6,7 +6,6 @@ public class HasilSPL {
         for (idx = 0; idx < col - 1; idx++) {
             solusi[idx] = 0;
         }
-        System.out.println(solusi[3]);
 
         for (idxRow = 0; idxRow < row; idxRow++) {
             solusi[idxRow] = matrix[idxRow][col-1];
@@ -24,11 +23,11 @@ public class HasilSPL {
 
         int firstlower = OperasiMatrix.idxRowNotNol(matrix);
 
-        for (idxRow = row - 1; idxRow >= firstlower; idxRow--) {
+        for (idxRow = firstlower; idxRow >= 0; idxRow--) {
             int idxFirstNotNol = BacaTulisMatrix.idxNot0(matrix, idxRow); 
             double temp = matrix[idxRow][col-1];
             for (idxCol = idxFirstNotNol+1; idxCol < col-1; idxCol++) {
-                temp -= matrix[idxRow][idxCol];
+                temp -= matrix[idxRow][idxCol]*solusi[idxCol];
             }
             solusi[idxRow] = temp;
         }

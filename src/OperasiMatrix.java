@@ -102,17 +102,6 @@ public class OperasiMatrix {
         }
         return isAll;
     }
-    public static boolean isSingleVar (double[][] matrix, int row, int first) {
-        boolean isSingleVar = true;
-        int idx, col = getCol(matrix);
-
-        for (idx = first + 1; idx < col - 1; idx++) {
-            if (matrix[row][idx] != 0 ) {
-                isSingleVar = false;
-            }
-        }
-        return isSingleVar;
-    }
 
     public static int idxRowNotNol (double[][] matrix) {
     int idxRow = getRow(matrix) - 1;
