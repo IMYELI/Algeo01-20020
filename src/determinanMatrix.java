@@ -74,7 +74,9 @@ public class determinanMatrix {
                 }
         
                 else if (temp.length==2){
-                    return (temp[0][0]*temp[1][1]-temp[0][1]*temp[1][0]);
+                    result = (temp[0][0]*temp[1][1]-temp[0][1]*temp[1][0]);
+                    System.out.println(result);
+                    return result;
                 }
         
                 else {
