@@ -107,6 +107,18 @@ public class BacaTulisMatrix {
         return idx;
     }
 
+    public static int idxNot0Reversed (double[][] matrix,int i){
+        int j;
+        int idx = 0;
+        for(j=matrix[0].length-1;j>=0;j--){
+            if(matrix[i][j] != 0){
+                return idx;
+            }
+            idx++;
+        }
+        return idx;
+    }
+
     public static double[][] swapRow(double[][] matrix, int i){
         double[][] copyM = BacaTulisMatrix.copy(matrix);
         int j;

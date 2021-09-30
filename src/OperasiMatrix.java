@@ -79,24 +79,24 @@ public class OperasiMatrix {
     }
     public static boolean isNotSolution(double[][] matrix) {
         boolean isNot = true;
-        int idx, col = getCol(matrix), row = getRow(matrix);
+        int idx, col = getCol(matrix), firstNotNolRow = idxRowNotNol(matrix);
 
         for (idx = 0; idx < col-1; idx++) {
-            if (matrix[row-1][idx] != 0) {
+            if (matrix[firstNotNolRow][idx] != 0) {
                 isNot = false;
             }
         }
-        if (matrix[row-1][col-1] != 0) {
+        if (matrix[firstNotNolRow][col-1] == 0) {
             isNot = false;
         }
         return isNot;
     }
-    public static boolean isAllNol(double[][] matrix) {
+    public static boolean isAllNol(double[][] matrix, int row) {
         boolean isAll = true;
-        int idx, col = getCol(matrix), row = getRow(matrix);
+        int idx, col = getCol(matrix);
 
         for (idx = 0; idx < col; idx++) {
-            if (matrix[row-1][idx] != 0) {
+            if (matrix[row][idx] != 0) {
                 isAll = false;
             }
         }
@@ -113,14 +113,14 @@ public class OperasiMatrix {
         }
         return isSingleVar;
     }
-    public static boolean syarat (double[][] matrix, String[] solusi, int idxRow, int idxCek) {
-        boolean yes = false;
-        if (matrix[idxRow][idxCek] != 0) {
-            if (solusi[idxCek] != "") {
-                yes = true;
-            }
-        }
-        return yes;
+
+    public static int idxRowNotNol (double[][] matrix) {
+    int idxRow = getRow(matrix) - 1;
+
+    while (isAllNol(matrix, idxRow)) {
+        idxRow--;
+    } 
+    return idxRow;
     }
 }
 

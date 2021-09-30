@@ -1,7 +1,12 @@
 public class HasilSPL {
     public static double[] HasilUnikJordan(double[][] matrix) {
-        int col = OperasiMatrix.getCol(matrix), row = OperasiMatrix.getRow(matrix), idxRow;
+        int col = OperasiMatrix.getCol(matrix), row = OperasiMatrix.getRow(matrix), idxRow, idx;
         double solusi[] = new double[col-1];
+
+        for (idx = 0; idx < col - 1; idx++) {
+            solusi[idx] = 0;
+        }
+        System.out.println(solusi[3]);
 
         for (idxRow = 0; idxRow < row; idxRow++) {
             solusi[idxRow] = matrix[idxRow][col-1];
@@ -17,7 +22,9 @@ public class HasilSPL {
             solusi[idx] = 0;
         }
 
-        for (idxRow = row - 1; idxRow >= 0; idxRow--) {
+        int firstlower = OperasiMatrix.idxRowNotNol(matrix);
+
+        for (idxRow = row - 1; idxRow >= firstlower; idxRow--) {
             int idxFirstNotNol = BacaTulisMatrix.idxNot0(matrix, idxRow); 
             double temp = matrix[idxRow][col-1];
             for (idxCol = idxFirstNotNol+1; idxCol < col-1; idxCol++) {
@@ -29,7 +36,7 @@ public class HasilSPL {
     }
 
     public static String[] HasilGakUnik (double[][] matrix) {
-        int col = OperasiMatrix.getCol(matrix), row = OperasiMatrix.getRow(matrix), idxRow, idxCol, idx;
+        int col = OperasiMatrix.getCol(matrix), idxRow, idxCol, idx;
 
   
         String solusi[] = new String[col-1];
@@ -37,19 +44,18 @@ public class HasilSPL {
             solusi[idx] = "";
         }
         char setStr = 'a';
+        int firstRow = OperasiMatrix.idxRowNotNol(matrix);
+        int firstLower = BacaTulisMatrix.idxNot0(matrix, firstRow);
 
-        int firstLower = BacaTulisMatrix.idxNot0(matrix, row-1) ;
         if (firstLower != col-2) {
             for (idxCol = col-2; idxCol > firstLower; idxCol--) {
-                if (matrix[row-1][idxCol] != 0) {
-                    String temp = new String();
-                    temp += setStr;
-                    solusi[col-2] = temp;
-                    setStr++;
-                }
+                String temp = new String();
+                temp += setStr;
+                solusi[idxCol] = temp;
+                setStr++;
             }
         }
-        for (idxRow = row - 1; idxRow >= 0; idxRow--) {
+        for (idxRow = firstRow; idxRow >= 0; idxRow--) {
             int idxFirstNotNol = BacaTulisMatrix.idxNot0(matrix, idxRow);
             String temp = new String();
             if (matrix[idxRow][col-1] != 0) {
@@ -69,18 +75,15 @@ public class HasilSPL {
                 }
                 solusi[idxFirstNotNol] = temp;
             } else {
-                if (matrix[idxRow][col-2] != 0) {
-                    temp += matrix[idxRow][col-2];
-                    if (solusi[col-2] != "") {
-                        temp += "(" + solusi[col-2] + ")";
-                    } 
-                }
-                for (idxCol = col-3; idxCol > idxFirstNotNol; idxCol--) {
+                int idxFirstNotNolReversed = BacaTulisMatrix.idxNot0Reversed(matrix, idxRow);
+                for (idxCol = idxFirstNotNolReversed; idxCol > idxFirstNotNol; idxCol--) {
                     if (matrix[idxRow][idxCol] != 0) {
-                        if (matrix[idxRow][idxCol] > 0) {
-                            temp += " - ";
-                        } else {
-                            temp += " + ";
+                        if (idxCol != idxFirstNotNolReversed) {
+                            if (matrix[idxRow][idxCol] > 0) {
+                                temp += " - ";
+                            } else {
+                                temp += " + ";
+                            }
                         }
                         temp += Math.abs(matrix[idxRow][idxCol]);
                         if (solusi[idxCol] != "") {
@@ -91,7 +94,7 @@ public class HasilSPL {
                 }
             }
         }
-        for (idx = 0; idx < col-2; idx++) {
+        for (idx = col - 2; idx >= 0; idx--) {
             if (solusi[idx] == "") {
                 String temp = new String();
                 temp += setStr;

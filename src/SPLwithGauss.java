@@ -3,13 +3,14 @@ public class SPLwithGauss {
         int row = OperasiMatrix.getRow(matrix), col = OperasiMatrix.getCol(matrix);
 
         double[][] matrixHasil = Gauss.jordan(matrix);
+        double[][] matrixCekSolusi = matrixHasil;
         double[][] matrixCek = OperasiMatrix.makeMatrixA(matrixHasil, row, col-1);
 
         int solusi = 1;
 
-        if (OperasiMatrix.isNotSolution(matrixCek)) {
+        if (OperasiMatrix.isNotSolution(matrixCekSolusi)) {
             solusi = 2;
-        } else if (!(OperasiMatrix.isSquare(matrixCek))) {
+        } else if (!(OperasiMatrix.isSquare(matrixCek)) || OperasiMatrix.isAllNol(matrixCekSolusi, row -1)) {
             solusi = 3;
         }
 
