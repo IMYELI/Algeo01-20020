@@ -5,11 +5,13 @@ public class test {
         
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
         double[][] matrix;
-        bacaMat.setMat(10,11);
+        bacaMat.setMat(2,4);
         matrix = bacaMat.baca(sc);
         BacaTulisMatrix.tulis(matrix);
         System.out.println();
         SPLwithCramer.SPLCramer(matrix);
+        SPLwithGauss.SPLGauss(matrix);
+        SPLwithGaussJordan.SPLGaussJordan(matrix);
 
         /*
         int newRow = matrix.length, newCol = matrix[0].length - 1;    

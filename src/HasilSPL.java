@@ -13,7 +13,7 @@ public class HasilSPL {
         int col = OperasiMatrix.getCol(matrix), row = OperasiMatrix.getRow(matrix), idxRow, idxCol, idx;
 
         double solusi[] = new double[col-1];
-        for (idx = 0; idx < col; idx++) {
+        for (idx = 0; idx < col - 1; idx++) {
             solusi[idx] = 0;
         }
 
@@ -32,14 +32,14 @@ public class HasilSPL {
         int col = OperasiMatrix.getCol(matrix), row = OperasiMatrix.getRow(matrix), idxRow, idxCol, idxCek, idx;
 
         String solusi[] = new String[col-1];
-        for (idx = 0; idx < col; idx++) {
+        for (idx = 0; idx < col - 1; idx++) {
             solusi[idx] = "";
         }
         char setStr = 'a';
 
         for (idxRow = row - 1; idxRow >= 0; idxRow--) {
             int idxFirstNotNol = BacaTulisMatrix.idxNot0(matrix, idxRow); 
-            for (idxCol = idxFirstNotNol; idxCol < col; idxCol++) {
+            for (idxCol = idxFirstNotNol; idxCol < col - 1; idxCol++) {
                 String temp = new String();
                 if (idxRow == row - 1 && OperasiMatrix.isAllNol(matrix)) {
                     temp += setStr;
@@ -56,7 +56,7 @@ public class HasilSPL {
                             setStr++;
                         }
                     } else {
-                        for (idxCek = idxFirstNotNol + 1; idxCek < col; idxCek++) {
+                        for (idxCek = idxFirstNotNol + 1; idxCek < col - 1; idxCek++) {
                             if (idxCek == col-1) {
                                 if (OperasiMatrix.syarat(matrix, solusi, idxRow, idxCek)) {
                                         temp += " + " + matrix[idxRow][idxCek] + "(" + solusi[idxCek] + ")";
@@ -79,7 +79,7 @@ public class HasilSPL {
                 }
             }
         }
-        for (idx = 0; idx < col; idx++) {
+        for (idx = 0; idx < col - 1; idx++) {
             String temp = new String();
             if (solusi[idx] == "") {
                 temp += setStr;
