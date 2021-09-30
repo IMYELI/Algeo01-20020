@@ -1,6 +1,8 @@
 import java.util.Scanner; 
+import java.io.FileWriter;
+import java.io.IOException;
 public class inversMatrix{
-    public static double[][] invers(double[][] matrix, Scanner read){
+    public static double[][] invers(double[][] matrix, Scanner read, FileWriter rekam){
         int pilMenu;
         boolean kembali = false;
         double determinan = determinanCramer.detKofaktor(matrix);
@@ -21,10 +23,23 @@ public class inversMatrix{
                 hasilinversMatrix = InversPakeGaussJordan.InversGaussJordan(matrix);
                 System.out.println("\nMatrix setelah di inverse: ");
                 BacaTulisMatrix.tulis(hasilinversMatrix);
+                try{
+                    rekam.write("\n\nMatrix setelah diinverse:\n");
+                BacaTulisMatrix.rekamMatrixToString(hasilinversMatrix, rekam);
+                }catch(IOException e){
+
+                }
+                
             }else if(pilMenu == 2){
                 hasilinversMatrix = InversPakeAdjoin.InversAdjoin(matrix, determinan);
                 System.out.println("\nMatrix setelah di inverse: ");
                 BacaTulisMatrix.tulis(hasilinversMatrix);
+                try{
+                    rekam.write("\n\nMatrix setelah diinverse:\n");
+                BacaTulisMatrix.rekamMatrixToString(hasilinversMatrix, rekam);
+                }catch(IOException e){
+                    
+                }
             }else if(pilMenu == 3){
                 kembali = true;
                 return hasilinversMatrix;

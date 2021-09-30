@@ -3,6 +3,9 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.io.File;
 class MainMenu{
     public static void main(String[] args){
         boolean keluar = false;
@@ -12,15 +15,16 @@ class MainMenu{
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
         int m,n,flag,i;
         boolean stop = false;
-        String tulis;
         String path = System.getProperty("user.dir");
         Path dir = Paths.get(path).getParent();
         dir = Paths.get(dir.toString(),"test");
-
+        LocalDateTime tanggal = LocalDateTime.now();
+        DateTimeFormatter formatDateTime = DateTimeFormatter.ofPattern("-yyyy-MM-dd-HH-mm-ss");
+        String waktu = tanggal.format(formatDateTime);
+        path = dir + "\\rekaman" + waktu + ".txt";
         try{
-            FileWriter rekam = new FileWriter(dir + "\\rekaman.txt");
+            FileWriter rekam = new FileWriter(path);
             
-
         while (!keluar){
             
             System.out.println("MAIN MENU: ");
@@ -35,13 +39,23 @@ class MainMenu{
 
             int pilMenu = sc.nextInt();
             if(pilMenu == 1){
-                
-            }else if(pilMenu == 2){
+                System.out.print("Masukan besar matrix mxn(input m dan n terpisah): ");
+                m = sc.nextInt();
+                n = sc.nextInt();
+                bacaMat.setMat(m, n);
+                matrix = bacaMat.baca(sc);
                 rekam.write("Matrix yang diinput: \n");
+                BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
+                rekam.write("\n\n");
+                double[] mVar = SPLMenu.invers(matrix, sc, rekam);
+
+
+            }else if(pilMenu == 2){
                 System.out.print("Masukan besar matrix m x m: ");
                 m = sc.nextInt();
                 bacaMat.setMatSquare(m);
                 matrix = bacaMat.baca(sc);
+                rekam.write("Matrix yang diinput: \n");
                 BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
                 System.out.println("\nMatrix yang anda input: ");
                 BacaTulisMatrix.tulis(matrix);
@@ -51,24 +65,22 @@ class MainMenu{
                 rekam.write("\n\n\n");
 
             }else if(pilMenu == 3){
-                rekam.write("Matrix yang diinput: \n");
                 System.out.print("Masukan besar matrix m x m: ");
                 m = sc.nextInt();
                 bacaMat.setMatSquare(m);
                 matrix = bacaMat.baca(sc);
+                rekam.write("Matrix yang diinput: \n");
                 BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
-                rekam.write("\n\nMatrix setelah diinverse:\n");
                 System.out.println("\nMatrix yang anda input: ");
                 BacaTulisMatrix.tulis(matrix);
-                matrix = inversMatrix.invers(matrix,sc);
-                BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
+                matrix = inversMatrix.invers(matrix,sc,rekam);
                 rekam.write("\n\n\n");
                 
                 
             }else if(pilMenu == 4){
-                rekam.write("Matrix yang diinput: \n");
                 matrix = BacaInterpolasi.baca(sc);
                 BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
+                rekam.write("Matrix yang diinput: \n");
                 double[] mVar = InterpolasiPolinom.interpolasi(matrix); 
                 System.out.println("Persamaan polinomial yang terbentuk: ");
                 rekam.write("\n\nPersamaan polinomial yang terbentuk:\n");
@@ -96,8 +108,8 @@ class MainMenu{
                 
 
             }else if(pilMenu == 5){
-                rekam.write("Matrix yang diinput: \n");
                 matrix = BacaRegresi.baca(sc);
+                rekam.write("Matrix yang diinput: \n");
                 BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
                 matrix = BacaRegresi.convertKali(matrix);
                 matrix = Gauss.jordan(matrix);
@@ -137,7 +149,9 @@ class MainMenu{
             rekam.close();
         }
         }catch(IOException e){
-            System.out.println("Ada error");
+            
+            System.out.println("\nAda error\n");
+            System.out.println(e);
         }
         sc.close();
         
