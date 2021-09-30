@@ -29,6 +29,7 @@ public class Gauss {
         for(j=0;j<matrix.length;j++){
             copyM = sortRowMatrix(copyM, j); //Mengesort idx bukan nol pertama terurut membesar
             k = BacaTulisMatrix.idxNot0(copyM, j);
+            
             if(k<matrix[0].length){
                 for(m=k;m<matrix.length;m++){
                     tag = copyM[m][k];              //Pembagi untuk setiap baris
@@ -61,12 +62,11 @@ public class Gauss {
         int i,j,k,o;
         double tag;
         //PENERAPAN METODE GAUSS-JORDAN
-        k=matrix[0].length-1;
+        k=matrix[0].length-2;
         for(j=matrix[0].length-1;j>0;j--){
             for(i=k;i>0;i--){
-                tag = copyM[i-1][k];            //Pengali untuk setiap baris
+                tag = copyM[i-1][k];           //Pengali untuk setiap baris
                 for(o=k;o<copyM[0].length;o++){
-                    
                     if(copyM[k][k] != 0){       //Mencegah pengurangan baris yang depannya sudah 0
                         copyM[i-1][o] = copyM[i-1][o] - (copyM[k][o]*tag);      //Pengurangan dengan baris paling bawah yang bernilai 1
                     //System.out.printf("(%d,%d,%d)\n",i,o,k);
