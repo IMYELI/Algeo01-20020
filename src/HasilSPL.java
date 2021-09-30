@@ -1,13 +1,13 @@
 public class HasilSPL {
     public static double[] HasilUnikJordan(double[][] matrix) {
-        int col = OperasiMatrix.getCol(matrix), row = OperasiMatrix.getRow(matrix), idxRow, idx;
+        int col = OperasiMatrix.getCol(matrix), idxRow, idx;
         double solusi[] = new double[col-1];
 
         for (idx = 0; idx < col - 1; idx++) {
             solusi[idx] = 0;
         }
-
-        for (idxRow = 0; idxRow < row; idxRow++) {
+        int firstlower = OperasiMatrix.idxRowNotNol(matrix);
+        for (idxRow = 0; idxRow <= firstlower; idxRow++) {
             solusi[idxRow] = matrix[idxRow][col-1];
         }
         return solusi;

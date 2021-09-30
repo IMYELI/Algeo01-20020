@@ -20,20 +20,21 @@ public class SPLMenu{
 
             // Metode Gauss
             if(pilMenu == 1){
-                int row = OperasiMatrix.getRow(matrix), col = OperasiMatrix.getCol(matrix);
+                int col = OperasiMatrix.getCol(matrix);
 
                 double[][] matrixHasil = Gauss.gauss(matrix);
                 double[][] matrixCekSolusi = matrixHasil;
-                double[][] matrixCek = OperasiMatrix.makeMatrixA(matrixHasil, row, col-1);
         
-                int solusi = 1;
-        
+                int solusi = 3;
+
+                int firstLower = OperasiMatrix.idxRowNotNol(matrixCekSolusi);
+
                 if (OperasiMatrix.isNotSolution(matrixCekSolusi)) {
                     solusi = 2;
-                } else if (!(OperasiMatrix.isSquare(matrixCek)) || OperasiMatrix.isAllNol(matrixCekSolusi, row -1)) {
-                    solusi = 3;
+                } else if (OperasiMatrix.solusiUnik(matrix, firstLower)) {
+                    solusi = 1;
                 }
-        
+
                 if (solusi == 1) {
                     
                     double solusiX[] = HasilSPL.HasilUnikGauss(matrixHasil);
@@ -64,14 +65,15 @@ public class SPLMenu{
 
                 double[][] matrixHasil = Gauss.jordan(matrix);
                 double[][] matrixCekSolusi = matrixHasil;
-                double[][] matrixCek = OperasiMatrix.makeMatrixA(matrixHasil, row, col-1);
         
-                int solusi = 1;
-        
+                int solusi = 3;
+
+                int firstLower = OperasiMatrix.idxRowNotNol(matrixCekSolusi);
+
                 if (OperasiMatrix.isNotSolution(matrixCekSolusi)) {
                     solusi = 2;
-                } else if (!(OperasiMatrix.isSquare(matrixCek)) || OperasiMatrix.isAllNol(matrixCekSolusi, row -1)) {
-                    solusi = 3;
+                } else if (OperasiMatrix.solusiUnik(matrix, firstLower)) {
+                    solusi = 1;
                 }
         
                 if (solusi == 1) {

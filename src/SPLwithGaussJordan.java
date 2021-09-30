@@ -5,13 +5,14 @@ public class SPLwithGaussJordan {
 
         double[][] matrixHasil = Gauss.jordan(matrix);
         double[][] matrixCekSolusi = matrixHasil;
-        double[][] matrixCek = OperasiMatrix.makeMatrixA(matrixHasil, row, col-1);
 
         int solusi = 1;
 
+        int firstLower = OperasiMatrix.idxRowNotNol(matrixCekSolusi);
+
         if (OperasiMatrix.isNotSolution(matrixCekSolusi)) {
             solusi = 2;
-        } else if (!(OperasiMatrix.isSquare(matrixCek)) || OperasiMatrix.isAllNol(matrixCekSolusi, row -1)) {
+        } else if (OperasiMatrix.isAllNol(matrixCekSolusi, firstLower)) {
             solusi = 3;
         }
 

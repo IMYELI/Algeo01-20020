@@ -111,6 +111,16 @@ public class OperasiMatrix {
     } 
     return idxRow;
     }
+
+    public static boolean solusiUnik (double[][] matrix, int lowerRow) {
+        int col = getCol(matrix);
+        boolean solusi = true;
+
+        if ((BacaTulisMatrix.idxNot0(matrix, lowerRow) != col - 2 && matrix[lowerRow][col-1] == 0) || col-1 != lowerRow+1) {
+            solusi = false;
+        }
+        return solusi;
+    }
 }
 
 
