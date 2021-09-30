@@ -56,32 +56,47 @@ public class HasilSPL {
                 temp += matrix[idxRow][col-1];
                 for (idxCol = col-2; idxCol > idxFirstNotNol; idxCol--) {
                     if (matrix[idxRow][idxCol] != 0) {
-                        if (solusi[idxCol] != "") {
-                            temp += " - " + matrix[idxRow][idxCol] + "(" + solusi[idxCol] + ")";
+                        if (matrix[idxRow][idxCol] > 0) {
+                            temp += " - ";
                         } else {
-                            temp += " - " + matrix[idxRow][idxCol];
+                            temp += " + ";
+                        }
+                        temp += Math.abs(matrix[idxRow][idxCol]);
+                        if (solusi[idxCol] != "") {
+                            temp += "(" + solusi[idxCol] + ")";
                         }
                     }
                 }
                 solusi[idxFirstNotNol] = temp;
             } else {
                 if (matrix[idxRow][col-2] != 0) {
+                    temp += matrix[idxRow][col-2];
                     if (solusi[col-2] != "") {
-                        temp += matrix[idxRow][col-2] + "(" + solusi[col-2] + ")";
-                    } else {
-                        temp += matrix[idxRow][col-2];
-                    }
+                        temp += "(" + solusi[col-2] + ")";
+                    } 
                 }
                 for (idxCol = col-3; idxCol > idxFirstNotNol; idxCol--) {
                     if (matrix[idxRow][idxCol] != 0) {
-                        if (solusi[idxCol] != "") {
-                            temp += " - " + matrix[idxRow][idxCol] + "(" + solusi[idxCol] + ")";
+                        if (matrix[idxRow][idxCol] > 0) {
+                            temp += " - ";
                         } else {
-                            temp += " - " + matrix[idxRow][idxCol];
+                            temp += " + ";
+                        }
+                        temp += Math.abs(matrix[idxRow][idxCol]);
+                        if (solusi[idxCol] != "") {
+                            temp += "(" + solusi[idxCol] + ")";
                         }
                     }
-                }
                 solusi[idxFirstNotNol] = temp;
+                }
+            }
+        }
+        for (idx = 0; idx < col-2; idx++) {
+            if (solusi[idx] == "") {
+                String temp = new String();
+                temp += setStr;
+                solusi[idx] = temp;
+                setStr++;
             }
         }
         return solusi;

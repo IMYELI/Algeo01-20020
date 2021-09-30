@@ -5,10 +5,12 @@ public class test {
         
         BacaTulisMatrix bacaMat = new BacaTulisMatrix();
         double[][] matrix;
-        bacaMat.setMat(2,4);
+        bacaMat.setMat(3,7);
         matrix = bacaMat.baca(sc);
         BacaTulisMatrix.tulis(matrix);
         System.out.println();
+        double[][] matrixHasil = Gauss.gauss(matrix);
+        BacaTulisMatrix.tulis(matrix);
         SPLwithCramer.SPLCramer(matrix);
         SPLwithGauss.SPLGauss(matrix);
         SPLwithGaussJordan.SPLGaussJordan(matrix);
