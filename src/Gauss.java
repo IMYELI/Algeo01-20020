@@ -31,7 +31,7 @@ public class Gauss {
             k = BacaTulisMatrix.idxNot0(copyM, j);
             
             if(k<matrix[0].length){
-                for(m=k;m<matrix.length;m++){
+                for(m=j;m<matrix.length;m++){
                     tag = copyM[m][k];              //Pembagi untuk setiap baris
                     for(n=k;n<copyM[0].length;n++){     
                         if(tag!=0){                 //Mencegah pembagian dengan angka 0
@@ -40,17 +40,18 @@ public class Gauss {
                     }
                 }
 
-                for(i=k;i<matrix.length-1;i++){
+                for(i=j;i<matrix.length-1;i++){
                     lock = false;
                     for(o=k;o<copyM[0].length;o++){
                         if(copyM[i+1][k] != 0 && o==k){
                             lock = true;               //Istri minta gembok
                         }
                         if (lock){
-                            copyM[i+1][o] = copyM[i+1][o] - copyM[k][o];  //Pengurangan dengan baris paling atas yang bernilai 1
+                            copyM[i+1][o] = copyM[i+1][o] - copyM[j][o];  //Pengurangan dengan baris paling atas yang bernilai 1
                         }
                     }
                 }
+                
             }
 
             
@@ -59,22 +60,26 @@ public class Gauss {
     } 
     public static double[][] jordan(double[][] matrix){
         double[][] copyM = Gauss.gauss(matrix);
-        int i,j,k,o;
+        int i,j,k,o,l;
         double tag;
         //PENERAPAN METODE GAUSS-JORDAN
-        k=matrix[0].length-2;
-        for(j=matrix[0].length-1;j>0;j--){
-            for(i=k;i>0;i--){
-                tag = copyM[i-1][k];           //Pengali untuk setiap baris
-                for(o=k;o<copyM[0].length;o++){
-                    if(copyM[k][k] != 0){       //Mencegah pengurangan baris yang depannya sudah 0
-                        copyM[i-1][o] = copyM[i-1][o] - (copyM[k][o]*tag);      //Pengurangan dengan baris paling bawah yang bernilai 1
-                    //System.out.printf("(%d,%d,%d)\n",i,o,k);
+        
+        for(j=matrix.length-1;j>0;j--){
+            if(!BacaTulisMatrix.lineZero(copyM, j)){
+                k = BacaTulisMatrix.idxNot0(copyM, j);
+                for(i=j;i>0;i--){
+                    tag = copyM[i-1][k];           //Pengali untuk setiap baris
+                    for(o=k;o<copyM[0].length;o++){
+                        if(tag != 0){       //Mencegah pengurangan baris yang depannya sudah 0
+                            copyM[i-1][o] = copyM[i-1][o] - (copyM[j][o]*tag);      //Pengurangan dengan baris paling bawah yang bernilai 1
+                        //System.out.printf("(%d,%d,%d)\n",i,o,k);
+                        }
+                        
                     }
-                    
                 }
+                k--;
             }
-            k--;
+            
 
         }
         return copyM;

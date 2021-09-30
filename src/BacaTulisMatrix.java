@@ -154,6 +154,15 @@ public class BacaTulisMatrix {
         }
         
     }
+    public static boolean lineZero(double[][] matrix,int i){
+        int j;
+        for(j=0;j<matrix[0].length;j++){
+            if  (matrix[i][j] != 0){
+                return false;
+            }
+        }
+        return true;
+    }
 }  
 
 
