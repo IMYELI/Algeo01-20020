@@ -14,7 +14,7 @@ public class HasilSPL {
     }
 
     public static double[] HasilUnikGauss(double[][] matrix) {
-        int col = OperasiMatrix.getCol(matrix), row = OperasiMatrix.getRow(matrix), idxRow, idxCol, idx;
+        int col = OperasiMatrix.getCol(matrix), idxRow, idxCol, idx;
 
         double solusi[] = new double[col-1];
         for (idx = 0; idx < col - 1; idx++) {
@@ -42,7 +42,7 @@ public class HasilSPL {
         for (idx = 0; idx < col -1; idx++) {
             solusi[idx] = "";
         }
-        char setStr = 'a';
+        char setStr = 's';
         int firstRow = OperasiMatrix.idxRowNotNol(matrix);
         int firstLower = BacaTulisMatrix.idxNot0(matrix, firstRow);
 
@@ -68,7 +68,7 @@ public class HasilSPL {
                         }
                         temp += Math.abs(matrix[idxRow][idxCol]);
                         if (solusi[idxCol] != "") {
-                            temp += "(" + solusi[idxCol] + ")";
+                            temp += solusi[idxCol];
                         }
                     }
                 }
@@ -86,7 +86,7 @@ public class HasilSPL {
                         }
                         temp += Math.abs(matrix[idxRow][idxCol]);
                         if (solusi[idxCol] != "") {
-                            temp += "(" + solusi[idxCol] + ")";
+                            temp += solusi[idxCol];
                         }
                     }
                 solusi[idxFirstNotNol] = temp;

@@ -17,7 +17,7 @@ public class SPLwithCramer {
                 
                 System.out.println("Solusinya sebagai berikut : ");
                 for (idxCol = 0; idxCol < colA; idxCol++) {
-                    System.out.format("X%o = %.2f", (idxCol+1), HasilCramer[idxCol]);
+                    System.out.printf("X%d = %.2f", (idxCol+1), HasilCramer[idxCol]);
                     System.out.println();
                 }
             } else {

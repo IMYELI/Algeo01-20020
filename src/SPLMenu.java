@@ -35,24 +35,26 @@ public class SPLMenu{
                 }
         
                 if (solusi == 1) {
+                    
                     double solusiX[] = HasilSPL.HasilUnikGauss(matrixHasil);
                     rekam.write("Solusi dari persamaan: \n\n");
                     System.out.println("Solusinya sebagai berikut : ");
         
                     int idxCol;           
                     for (idxCol = 0; idxCol < col - 1; idxCol++) {
-                        System.out.format("X%o = %.2f %n", (idxCol+1), solusiX[idxCol]);
+                        System.out.format("X%d = %.2f %n", (idxCol+1), solusiX[idxCol]);
                     }
                 } else if (solusi == 2) {
                     System.out.println("Tidak ada Solusi");
                 }  else if (solusi == 3) {
+                    matrixHasil = Gauss.jordan(matrix);
                     String[] solusiX = HasilSPL.HasilGakUnik(matrixHasil);
                     
                     System.out.println("Solusinya sebagai berikut : ");
         
                     int idxCol;
                     for (idxCol = 0; idxCol < col - 1; idxCol++) {
-                        System.out.format("X%o = %s %n", (idxCol+1), solusiX[idxCol]);
+                        System.out.format("X%d = %s %n", (idxCol+1), solusiX[idxCol]);
                         rekam.write("X" + Integer.toString(idxCol+1) + " = " + solusiX[idxCol] + "\n");
                     }
                 }
@@ -80,7 +82,7 @@ public class SPLMenu{
         
                     int idxCol;
                     for (idxCol = 0; idxCol < col - 1; idxCol++) {
-                        System.out.format("X%o = %.2f %n", (idxCol+1), solusiX[idxCol]);
+                        System.out.format("X%d = %.2f %n", (idxCol+1), solusiX[idxCol]);
                     }
                 } else if (solusi == 2) {
                     System.out.println("Tidak ada Solusi");
@@ -92,7 +94,7 @@ public class SPLMenu{
         
                     int idxCol;
                     for (idxCol = 0; idxCol < col - 1; idxCol++) {
-                        System.out.format("X%o = %s %n", (idxCol+1), solusiX[idxCol]);
+                        System.out.format("X%d = %s %n", (idxCol+1), solusiX[idxCol]);
                         rekam.write("X" + Integer.toString(idxCol + 1) + " = " + solusiX[idxCol] + "\n");
                     }
                 }
@@ -114,7 +116,7 @@ public class SPLMenu{
                         
                         System.out.println("Solusinya sebagai berikut : ");
                         for (idxCol = 0; idxCol < colA; idxCol++) {
-                            System.out.format("X%o = %.2f", (idxCol+1), HasilCramer[idxCol]);
+                            System.out.format("X%d = %.2f", (idxCol+1), HasilCramer[idxCol]);
                             System.out.println();
                         }
                     } else {

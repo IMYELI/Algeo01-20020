@@ -24,7 +24,7 @@ public class SPLwithInvers {
   
                 System.out.println("Solusinya sebagai berikut : ");
                 for (idxRow = 0; idxRow < rowA; idxRow++) {
-                    System.out.format("X%o = %.2f", (idxRow + 1), HasilInvers[idxRow]);
+                    System.out.format("X%d = %.2f", (idxRow + 1), HasilInvers[idxRow]);
                     System.out.println();
                 }
             }

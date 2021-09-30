@@ -23,7 +23,7 @@ public class SPLwithGaussJordan {
 
             int idxCol;
             for (idxCol = 0; idxCol < col - 1; idxCol++) {
-                System.out.format("X%o = %.2f %n", (idxCol+1), solusiX[idxCol]);
+                System.out.format("X%d = %.2f %n", (idxCol+1), solusiX[idxCol]);
             }
         } else if (solusi == 2) {
             System.out.println("Tidak ada Solusi");
@@ -34,7 +34,7 @@ public class SPLwithGaussJordan {
 
             int idxCol;
             for (idxCol = 0; idxCol < col - 1; idxCol++) {
-                System.out.format("X%o = %s %n", (idxCol+1), solusiX[idxCol]);
+                System.out.format("X%d = %s %n", (idxCol+1), solusiX[idxCol]);
             }
         }
     }
