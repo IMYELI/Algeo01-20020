@@ -16,13 +16,12 @@ public class InversPakeGaussJordan {
                 }
             }
         }
-        BacaTulisMatrix.tulis(copyM);
         //PENERAPAN METODE GAUSS
         copyM = Gauss.jordan(copyM);
         
         for(i=0;i<matrix.length;i++){
             for(j=0;j<matrix.length;j++){
-                matrix[i][j] = copyM[i][j+4];
+                matrix[i][j] = copyM[i][j+matrix[0].length];
             }
         }
         return matrix;
