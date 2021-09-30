@@ -39,13 +39,15 @@ class MainMenu{
 
             int pilMenu = sc.nextInt();
             if(pilMenu == 1){
-                System.out.print("Masukan besar matrix mxn(input m dan n terpisah): ");
+                System.out.print("Masukan besar matrix m x n(input m dan n terpisah): ");
                 m = sc.nextInt();
                 n = sc.nextInt();
                 bacaMat.setMat(m, n);
                 matrix = bacaMat.baca(sc);
                 rekam.write("Matrix yang diinput: \n");
                 BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
+                System.out.println("\nMatrix yang anda input: ");
+                BacaTulisMatrix.tulis(matrix);
                 rekam.write("\n\n");
                 double[] mVar = SPLMenu.invers(matrix, sc, rekam);
 

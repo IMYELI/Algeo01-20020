@@ -1,0 +1,17 @@
+Matrix yang diinput: 
+2.0 3.0 3.0 3.0
+4.0 5.0 5.0 6.0
+
+
+Solusi dari persamaan: 
+
+X1 = 1.5
+X2 = a
+X3 = b
+Solusi dari persamaan: 
+
+X1 = 1.5
+X2 = a
+X3 = b
+Cara yang dipilih tidak bisa menyelesaikan persamaan. Mencoba cara lain...
+

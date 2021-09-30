@@ -107,22 +107,25 @@ public class SPLMenu{
                 double[][] matrixB = OperasiMatrix.makeMatrixB(matrix, newRow, newCol);
         
                 int colA = OperasiMatrix.getCol(matrixA);
-                double determinan = determinanCramer.detKofaktor(matrixA);
+               
             
-                if (OperasiMatrix.isSquare(matrixA) && determinan != 0) {
-                    solusiSPL = HasilSPL.HasilCramer(matrixA, matrixB, determinan);
-                    int idxCol;
-                    rekam.write("Solusi dari persamaan: \n\n");
-                    System.out.println("Solusinya sebagai berikut : ");
-                    for (idxCol = 0; idxCol < colA; idxCol++) {
-                        rekam.write("X" + Integer.toString(idxCol + 1) + " = " + Double.toString(solusiSPL[idxCol]) + "\n");
-                        System.out.format("X%d = %.2f", (idxCol+1), solusiSPL[idxCol]);
-                        System.out.println();
+                if (OperasiMatrix.isSquare(matrixA)) {
+                    double determinan = determinanCramer.detKofaktor(matrixA);
+                    if (determinan != 0) {
+                        double[] HasilCramer = HasilSPL.HasilCramer(matrixA, matrixB, determinan);
+                        int idxCol;
+                        
+                        System.out.println("Solusinya sebagai berikut : ");
+                        for (idxCol = 0; idxCol < colA; idxCol++) {
+                            System.out.format("X%o = %.2f", (idxCol+1), HasilCramer[idxCol]);
+                            System.out.println();
+                        }
+                    } else {
+                        System.out.println("Tidak bisa diselesaikan dengan cara ini silakan gunakan cara lain.");
                     }
                 //Tidak bisa di kerjakan karena bukan matrix persegi
                 } else {
                     System.out.println("Tidak bisa diselesaikan dengan cara ini silakan gunakan cara lain.");
-                    rekam.write("Cara yang dipilih tidak bisa menyelesaikan persamaan. Mencoba cara lain...\n\n");
                 }
             // Metoder Invers
             } else if(pilMenu == 4) {
