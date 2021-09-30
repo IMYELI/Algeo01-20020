@@ -29,62 +29,59 @@ public class HasilSPL {
     }
 
     public static String[] HasilGakUnik (double[][] matrix) {
-        int col = OperasiMatrix.getCol(matrix), row = OperasiMatrix.getRow(matrix), idxRow, idxCol, idxCek, idx;
+        int col = OperasiMatrix.getCol(matrix), row = OperasiMatrix.getRow(matrix), idxRow, idxCol, idx;
 
+  
         String solusi[] = new String[col-1];
-        for (idx = 0; idx < col - 1; idx++) {
+        for (idx = 0; idx < col -1; idx++) {
             solusi[idx] = "";
         }
         char setStr = 'a';
 
-        for (idxRow = row - 1; idxRow >= 0; idxRow--) {
-            int idxFirstNotNol = BacaTulisMatrix.idxNot0(matrix, idxRow); 
-            for (idxCol = idxFirstNotNol; idxCol < col - 1; idxCol++) {
-                String temp = new String();
-                if (idxRow == row - 1 && OperasiMatrix.isAllNol(matrix)) {
+        int firstLower = BacaTulisMatrix.idxNot0(matrix, row-1) ;
+        if (firstLower != col-2) {
+            for (idxCol = col-2; idxCol > firstLower; idxCol--) {
+                if (matrix[row-1][idxCol] != 0) {
+                    String temp = new String();
                     temp += setStr;
-                    solusi[idxFirstNotNol] = temp;
+                    solusi[col-2] = temp;
                     setStr++;
-                } else {
-                    if (OperasiMatrix.isSingleVar(matrix, idxRow, idxFirstNotNol)) {
-                        if (matrix[idxRow][col-1] != 0) {
-                            temp += matrix[idxRow][col-1];
-                            solusi[idxFirstNotNol] = temp;
-                        } else {
-                            temp += setStr;
-                            solusi[idxFirstNotNol] = temp;
-                            setStr++;
-                        }
-                    } else {
-                        for (idxCek = idxFirstNotNol + 1; idxCek < col - 1; idxCek++) {
-                            if (idxCek == col-1) {
-                                if (OperasiMatrix.syarat(matrix, solusi, idxRow, idxCek)) {
-                                        temp += " + " + matrix[idxRow][idxCek] + "(" + solusi[idxCek] + ")";
-                                        solusi[idxFirstNotNol] = temp;
-                                }
-                            } else if (idxCek == idxFirstNotNol+1) {
-                                if (OperasiMatrix.syarat(matrix, solusi, idxRow, idxCek)) {
-                                        temp += matrix[idxRow][idxCek] + "(" + solusi[idxCek] + ")";
-                                        solusi[idxFirstNotNol] = temp;
-                                }
-                            } else {
-                                if (OperasiMatrix.syarat(matrix, solusi, idxRow, idxCek)) {
-                                        temp += " + -" + matrix[idxRow][idxCek] + "(" + solusi[idxCek] + ")";
-                                        solusi[idxFirstNotNol] = temp;
-                                    }
-                            }
-                        }
-
-                    }
                 }
             }
         }
-        for (idx = 0; idx < col - 1; idx++) {
+        for (idxRow = row - 1; idxRow >= 0; idxRow--) {
+            int idxFirstNotNol = BacaTulisMatrix.idxNot0(matrix, idxRow);
             String temp = new String();
-            if (solusi[idx] == "") {
-                temp += setStr;
-                solusi[idx] = temp;
-                setStr++;
+            if (matrix[idxRow][col-1] != 0) {
+                temp += matrix[idxRow][col-1];
+                for (idxCol = col-2; idxCol > idxFirstNotNol; idxCol--) {
+                    if (matrix[idxRow][idxCol] != 0) {
+                        if (solusi[idxCol] != "") {
+                            temp += " - " + matrix[idxRow][idxCol] + "(" + solusi[idxCol] + ")";
+                        } else {
+                            temp += " - " + matrix[idxRow][idxCol];
+                        }
+                    }
+                }
+                solusi[idxFirstNotNol] = temp;
+            } else {
+                if (matrix[idxRow][col-2] != 0) {
+                    if (solusi[col-2] != "") {
+                        temp += matrix[idxRow][col-2] + "(" + solusi[col-2] + ")";
+                    } else {
+                        temp += matrix[idxRow][col-2];
+                    }
+                }
+                for (idxCol = col-3; idxCol > idxFirstNotNol; idxCol--) {
+                    if (matrix[idxRow][idxCol] != 0) {
+                        if (solusi[idxCol] != "") {
+                            temp += " - " + matrix[idxRow][idxCol] + "(" + solusi[idxCol] + ")";
+                        } else {
+                            temp += " - " + matrix[idxRow][idxCol];
+                        }
+                    }
+                }
+                solusi[idxFirstNotNol] = temp;
             }
         }
         return solusi;
