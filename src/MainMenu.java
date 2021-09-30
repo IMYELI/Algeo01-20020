@@ -5,7 +5,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.io.File;
 class MainMenu{
     public static void main(String[] args){
         boolean keluar = false;
@@ -25,7 +24,7 @@ class MainMenu{
         try{
             FileWriter rekam = new FileWriter(path);
             
-        while (!keluar){
+
             
             System.out.println("MAIN MENU: ");
             System.out.println("1. Sistem Persamaan Linier");
@@ -149,7 +148,6 @@ class MainMenu{
                 System.out.println("Pilihan menu tidak valid");
             }      
             rekam.close();
-        }
         }catch(IOException e){
             
             System.out.println("\nAda error\n");

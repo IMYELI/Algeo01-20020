@@ -16,7 +16,7 @@ public class InversPakeGaussJordan {
                 }
             }
         }
-
+        BacaTulisMatrix.tulis(copyM);
         //PENERAPAN METODE GAUSS
         copyM = Gauss.jordan(copyM);
         
