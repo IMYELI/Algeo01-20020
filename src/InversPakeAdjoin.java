@@ -3,7 +3,10 @@ public class InversPakeAdjoin {
         int row ,col,rowIn,colIn,i,j;
         double[][] tmp2 = BacaTulisMatrix.copy(matrix);
         double[][] tmp = new double[matrix.length-1][matrix[0].length-1];
-
+        if(matrix.length == 1){
+            tmp2[0][0] = 1/matrix[0][0];
+            return tmp2;
+        }
         //MEMBUAT ADJOIN
         for(row=0;row<matrix.length;row++){
             for(col=0;col<matrix[0].length;col++){

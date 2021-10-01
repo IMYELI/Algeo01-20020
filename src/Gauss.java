@@ -79,7 +79,6 @@ public class Gauss {
                 }
                 k--;
             }
-            
 
         }
         return copyM;
