@@ -5,8 +5,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 public class BacaInterpolasi {
     public static double[][] baca(Scanner sc){
+        System.out.println();
+        System.out.println("==============================================================");
         System.out.print("Masukan banyak titik: ");
         int n = sc.nextInt();
+        System.out.println();
+        System.out.println("==============================================================");
         System.out.println("Pilihan input: ");
         System.out.println("1. Keyboard");
         System.out.println("2. file");
@@ -26,6 +30,8 @@ public class BacaInterpolasi {
                 }
 
             }else if(op == 2){
+                System.out.println();
+                System.out.println("==============================================================");
                 System.out.print("Masukkan path lengkap file: ");
                 String pathFile = sc.next();
                 File file = new File(pathFile);    
@@ -40,10 +46,14 @@ public class BacaInterpolasi {
                 }
                 dataReader.close(); 
             }else{
+                System.out.println();
+                System.out.println("==============================================================");
                 System.out.println("Opsi tidak ada.");
             }
 
-        }catch (FileNotFoundException exception) {  
+        }catch (FileNotFoundException exception) {
+            System.out.println();
+            System.out.println("==============================================================");  
             System.out.println("File tidak ditemukan");  
         } 
 

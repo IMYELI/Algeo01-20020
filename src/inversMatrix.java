@@ -9,19 +9,26 @@ public class inversMatrix{
         double[][] hasilinversMatrix = BacaTulisMatrix.copy(matrix);
 
         while(!kembali){
+            System.out.println();
+            System.out.println("==================== Matrix Invers =======================");
+            System.out.println();
             System.out.println("Pilihan menu invers: ");
             System.out.println("1. Metode eliminasi Gauss-Jordan");
             System.out.println("2. Metode adjoin");
-            System.out.println("3. Kembali ke menu utama");
+            System.out.println("3. Keluar");
             System.out.print("Pilihan menu: ");
             pilMenu = read.nextInt();
             if(determinan == 0){
+                System.out.println();
+                System.out.println("==============================================================");
                 System.out.println("Tidak mempunyai matrix balikan");
                 return matrix;
             }
             if(pilMenu == 1){
                 hasilinversMatrix = InversPakeGaussJordan.InversGaussJordan(matrix);
-                System.out.println("\nMatrix setelah di inverse: ");
+                System.out.println();
+                System.out.println("==============================================================");
+                System.out.println("Matrix setelah di inverse: ");
                 BacaTulisMatrix.tulis(hasilinversMatrix);
                 try{
                     rekam.write("\n\nMatrix setelah diinverse:\n");
@@ -32,7 +39,9 @@ public class inversMatrix{
                 
             }else if(pilMenu == 2){
                 hasilinversMatrix = InversPakeAdjoin.InversAdjoin(matrix, determinan);
-                System.out.println("\nMatrix setelah di inverse: ");
+                System.out.println();
+                System.out.println("==============================================================");
+                System.out.println("Matrix setelah di inverse: ");
                 BacaTulisMatrix.tulis(hasilinversMatrix);
                 try{
                     rekam.write("\n\nMatrix setelah diinverse:\n");
@@ -44,6 +53,8 @@ public class inversMatrix{
                 kembali = true;
                 return hasilinversMatrix;
             }else{
+                System.out.println();
+                System.out.println("==============================================================");
                 System.out.println("Pilihan menu tidak valid");
             }
         }

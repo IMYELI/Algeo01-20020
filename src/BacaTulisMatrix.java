@@ -16,6 +16,8 @@ public class BacaTulisMatrix {
         this.n = n;
     }
     public double[][] baca(Scanner readOp) {  
+        System.out.println();
+        System.out.println("===============================================================");
         System.out.println("Pilihan input: ");
         System.out.println("1. Keyboard");
         System.out.println("2. file");
@@ -33,6 +35,8 @@ public class BacaTulisMatrix {
                     }
 
             }else if(op == 2){
+                System.out.println();
+                System.out.println("==============================================================");
                 System.out.print("Masukkan path lengkap file: ");
                 String pathFile = readOp.next();
                 File file = new File(pathFile);    
@@ -47,10 +51,14 @@ public class BacaTulisMatrix {
                 }
                 dataReader.close(); 
             }else{
+                System.out.println();
+                System.out.println("==============================================================");
                 System.out.println("Opsi tidak ada.");
             }
             
-        } catch (FileNotFoundException exception) {  
+        } catch (FileNotFoundException exception) { 
+            System.out.println();
+            System.out.println("=============================================================="); 
             System.out.println("File tidak ditemukan");  
         }  
         return matrix; 

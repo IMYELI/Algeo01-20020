@@ -2,19 +2,23 @@ import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
 public class SPLMenu{
-    public static double[] invers(double[][] matrix, Scanner read, FileWriter rekam){
+    public static double[] SPL(double[][] matrix, Scanner read, FileWriter rekam){
         int pilMenu, sum = OperasiMatrix.getRow(matrix);
         boolean kembali = false;
         double[] solusiSPL = new double [sum];
         try{
 
         while(!kembali){
-            System.out.println("Pilihan menu invers: ");
+            System.out.println();
+            System.out.println("================ Sistem Persamaan Linier ====================");
+            System.out.println();
+            System.out.println("Pilihan menu SPL: ");
             System.out.println("1. Metode eliminasi Gauss");
             System.out.println("2. Metode eliminasi Gauss-Jordan");
             System.out.println("3. Metode cramer");
             System.out.println("4. Metode invers");
-            System.out.println("5. Kembali ke Menu Utama");
+            System.out.println("5. Keluar");
+            System.out.println();
             System.out.print("Pilihan menu: ");
             pilMenu = read.nextInt();
 
@@ -46,7 +50,7 @@ public class SPLMenu{
                         System.out.format("X%d = %.2f %n", (idxCol+1), solusiX[idxCol]);
                     }
                 } else if (solusi == 2) {
-                    System.out.println("Tidak ada Solusi");
+                    System.out.println("Tidak ada Solusi.");
                 }  else if (solusi == 3) {
                     matrixHasil = Gauss.jordan(matrix);
                     String[] solusiX = HasilSPL.HasilGakUnik(matrixHasil);
@@ -80,6 +84,8 @@ public class SPLMenu{
                     double solusiX[] = HasilSPL.HasilUnikJordan(matrixHasil);
         
                     rekam.write("Solusi dari persamaan: \n\n");
+                    System.out.println();
+                    System.out.println("==============================================================");
                     System.out.println("Solusinya sebagai berikut : ");
         
                     int idxCol;
@@ -87,11 +93,15 @@ public class SPLMenu{
                         System.out.format("X%d = %.2f %n", (idxCol+1), solusiX[idxCol]);
                     }
                 } else if (solusi == 2) {
-                    System.out.println("Tidak ada Solusi");
+                    System.out.println();
+                    System.out.println("==============================================================");
+                    System.out.println("Tidak ada Solusi.");
                 } else if (solusi == 3) {
                     String[] solusiX = HasilSPL.HasilGakUnik(matrixHasil);
 
                     rekam.write("Solusi dari persamaan: \n\n");
+                    System.out.println();
+                    System.out.println("==============================================================");
                     System.out.println("Solusinya sebagai berikut : ");
         
                     int idxCol;
@@ -115,17 +125,22 @@ public class SPLMenu{
                     if (determinan != 0) {
                         double[] HasilCramer = HasilSPL.HasilCramer(matrixA, matrixB, determinan);
                         int idxCol;
-                        
+                        System.out.println();
+                        System.out.println("==============================================================");
                         System.out.println("Solusinya sebagai berikut : ");
                         for (idxCol = 0; idxCol < colA; idxCol++) {
                             System.out.format("X%d = %.2f", (idxCol+1), HasilCramer[idxCol]);
                             System.out.println();
                         }
                     } else {
+                        System.out.println();
+                        System.out.println("==============================================================");
                         System.out.println("Tidak bisa diselesaikan dengan cara ini silakan gunakan cara lain.");
                     }
                 //Tidak bisa di kerjakan karena bukan matrix persegi
                 } else {
+                    System.out.println();
+                    System.out.println("==============================================================");
                     System.out.println("Tidak bisa diselesaikan dengan cara ini silakan gunakan cara lain.");
                 }
             // Metoder Invers
@@ -143,16 +158,21 @@ public class SPLMenu{
                         double determinan = determinanCramer.detKofaktor(matrixA);
                         //B matrix nol & determinan = 0
                         if (isNol && determinan == 0) {
+                            System.out.println();
+                            System.out.println("==============================================================");
                             System.out.println("Solusi tidak trivial, gunakan cara lain.");
                             rekam.write("Solusi tidak trivial, gunakan cara lain.\n");
                         //B bukan matrix nol & determinan = 0
                         } else if (!isNol && determinan == 0) {
+                            System.out.println();
+                            System.out.println("==============================================================");
                             System.out.println("Solusi tidak tunggal unik, gunakan cara lain.");
                             rekam.write("Solusi tidak tunggal unik, gunakan cara lain.\n");
                         } else if (!isNol && determinan != 0) {
                             solusiSPL = HasilSPL.HasilInvers(matrixA, matrixB, determinan);
                             int idxRow;
-              
+                            System.out.println();
+                            System.out.println("==============================================================");
                             System.out.println("Solusinya sebagai berikut : ");
                             rekam.write("Solusi dari persamaan: \n\n");
                             for (idxRow = 0; idxRow < rowA; idxRow++) {
@@ -163,7 +183,9 @@ public class SPLMenu{
                         }
                     //bukan matrix square tidak bisa invers
                     } else {
-                        System.out.println("Tidak bisa diselesaikan dengan cara ini silakan gunakan cara lain");
+                        System.out.println();
+                        System.out.println("==============================================================");
+                        System.out.println("Tidak bisa diselesaikan dengan cara ini silakan gunakan cara lain.");
                         rekam.write("Cara yang dipilih tidak bisa menyelesaikan persamaan. Mencoba cara lain...\n\n");
                     }
             }
@@ -172,6 +194,8 @@ public class SPLMenu{
                 kembali = true;
                 return solusiSPL;
             }else{
+                System.out.println();
+                System.out.println("==============================================================");
                 System.out.println("Pilihan menu tidak valid");
             }
         }

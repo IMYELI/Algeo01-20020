@@ -6,10 +6,13 @@ public class determinanMatrix {
         double[][] temp = BacaTulisMatrix.copy(matrix);
         boolean kembali = false;
         while(!kembali){
+            System.out.println();
+            System.out.println("================== Determinan Matrix ====================");
+            System.out.println();
             System.out.println("Pilihan menu determinan: ");
             System.out.println("1. Metode eliminasi Gauss");
             System.out.println("2. Metode kofaktor");
-            System.out.println("3. Kembali ke menu utama");
+            System.out.println("3. Keluar");
             System.out.print("Pilihan menu: ");
             pilMenu = read.nextInt();
             if(pilMenu == 1){

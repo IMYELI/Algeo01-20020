@@ -25,8 +25,9 @@ class MainMenu{
             FileWriter rekam = new FileWriter(path);
             
 
-            
-            System.out.println("MAIN MENU: ");
+            System.out.println("========================== Main Menu ==========================");
+            System.out.println();
+            System.out.println("Pilihan Main Menu: ");
             System.out.println("1. Sistem Persamaan Linier");
             System.out.println("2. Determinan");
             System.out.println("3. Matriks balikan");
@@ -35,30 +36,39 @@ class MainMenu{
             System.out.println("6. Keluar");
             System.out.println();
             System.out.print("Pilihan menu: ");
-
+            
+            
             int pilMenu = sc.nextInt();
             if(pilMenu == 1){
-                System.out.print("Masukan besar matrix m x n(input m dan n terpisah): ");
+                System.out.println();
+                System.out.println("==============================================================");
+                System.out.print("Masukan besar matrix m x n (input m dan n terpisah): ");
                 m = sc.nextInt();
                 n = sc.nextInt();
                 bacaMat.setMat(m, n);
                 matrix = bacaMat.baca(sc);
                 rekam.write("Matrix yang diinput: \n");
                 BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
-                System.out.println("\nMatrix yang anda input: ");
+                System.out.println();
+                System.out.println("==============================================================");
+                System.out.println("Matrix yang anda input: ");
                 BacaTulisMatrix.tulis(matrix);
                 rekam.write("\n\n");
-                double[] mVar = SPLMenu.invers(matrix, sc, rekam);
+                double[] mVar = SPLMenu.SPL(matrix, sc, rekam);
 
 
             }else if(pilMenu == 2){
+                System.out.println();
+                System.out.println("==============================================================");
                 System.out.print("Masukan besar matrix m x m: ");
                 m = sc.nextInt();
                 bacaMat.setMatSquare(m);
                 matrix = bacaMat.baca(sc);
                 rekam.write("Matrix yang diinput: \n");
                 BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
-                System.out.println("\nMatrix yang anda input: ");
+                System.out.println();
+                System.out.println("==============================================================");
+                System.out.println("Matrix yang anda input: ");
                 BacaTulisMatrix.tulis(matrix);
                 hasilDet = determinanMatrix.determinan(matrix,sc);
                 rekam.write("\n\nDeterminan dari matrix: \n");
@@ -66,13 +76,17 @@ class MainMenu{
                 rekam.write("\n\n\n");
 
             }else if(pilMenu == 3){
+                System.out.println();
+                System.out.println("==============================================================");
                 System.out.print("Masukan besar matrix m x m: ");
                 m = sc.nextInt();
                 bacaMat.setMatSquare(m);
                 matrix = bacaMat.baca(sc);
                 rekam.write("Matrix yang diinput: \n");
                 BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
-                System.out.println("\nMatrix yang anda input: ");
+                System.out.println();
+                System.out.println("==============================================================");
+                System.out.println("Matrix yang anda input: ");
                 BacaTulisMatrix.tulis(matrix);
                 matrix = inversMatrix.invers(matrix,sc,rekam);
                 rekam.write("\n\n\n");
@@ -83,6 +97,8 @@ class MainMenu{
                 BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
                 rekam.write("Matrix yang diinput: \n");
                 double[] mVar = InterpolasiPolinom.interpolasi(matrix); 
+                System.out.println();
+                System.out.println("==============================================================");
                 System.out.println("Persamaan polinomial yang terbentuk: ");
                 rekam.write("\n\nPersamaan polinomial yang terbentuk:\n");
                 BacaInterpolasi.tulisRekam(mVar,rekam);
@@ -90,10 +106,14 @@ class MainMenu{
                 System.out.println();
                 rekam.write("\n\nHasil taksir: \n");
                 while(!stop){
+                    System.out.println();
+                    System.out.println("==============================================================");
                     System.out.print("Masukan nilai yang ingin ditaksir: ");
                     taksiran = sc.nextDouble();
                     hasil = InterpolasiPolinom.taksir(mVar, taksiran);
                     rekam.write("F(" + Double.toString(taksiran) + ") = " + Double.toString(hasil) + "\n");
+                    System.out.println();
+                    System.out.println("==============================================================");
                     System.out.println("Hasil taksiran:");
                     System.out.printf("%f",hasil);
                     System.out.println();
@@ -114,6 +134,8 @@ class MainMenu{
                 BacaTulisMatrix.rekamMatrixToString(matrix, rekam);
                 matrix = BacaRegresi.convertKali(matrix);
                 matrix = Gauss.jordan(matrix);
+                System.out.println();
+                System.out.println("==============================================================");
                 System.out.println("Hasil regresi matrix: ");
                 BacaRegresi.tulis(matrix);
                 rekam.write("\n\nHasil regresi:\n");
@@ -123,6 +145,8 @@ class MainMenu{
                 System.out.println();
                 double[] taksiranRegresi = new double[mVar.length-1];
                 while(!stop){
+                    System.out.println();
+                    System.out.println("==============================================================");
                     System.out.print("Masukan nilai yang ingin ditaksir: \n");
                     for(i=0;i<mVar.length-1;i++){
                         taksiranRegresi[i] = sc.nextDouble();
@@ -131,6 +155,8 @@ class MainMenu{
                     BacaRegresi.rekamHasil(taksiranRegresi,rekam);
                     rekam.write(Double.toString(hasil));
                     rekam.write("\n");
+                    System.out.println();
+                    System.out.println("==============================================================");
                     System.out.println("Hasil taksiran:");
                     System.out.printf("%f",hasil);
                     System.out.println();
@@ -145,6 +171,8 @@ class MainMenu{
             }else if(pilMenu == 6){
                 keluar = true;
             }else{
+                System.out.println();
+                System.out.println("==============================================================");
                 System.out.println("Pilihan menu tidak valid");
             }      
             rekam.close();

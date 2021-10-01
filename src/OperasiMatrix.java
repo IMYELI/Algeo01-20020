@@ -106,7 +106,7 @@ public class OperasiMatrix {
     public static int idxRowNotNol (double[][] matrix) {
     int idxRow = getRow(matrix) - 1;
 
-    while (isAllNol(matrix, idxRow)) {
+    while (isAllNol(matrix, idxRow) && idxRow > 0) {
         idxRow--;
     } 
     return idxRow;
