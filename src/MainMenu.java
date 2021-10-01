@@ -16,7 +16,7 @@ class MainMenu{
         boolean stop = false;
         String path = System.getProperty("user.dir");
         Path dir = Paths.get(path).getParent();
-        dir = Paths.get(dir.toString(),"test");
+        dir = Paths.get(dir.toString(),"test","Dump rekaman");
         LocalDateTime tanggal = LocalDateTime.now();
         DateTimeFormatter formatDateTime = DateTimeFormatter.ofPattern("-yyyy-MM-dd-HH-mm-ss");
         String waktu = tanggal.format(formatDateTime);
