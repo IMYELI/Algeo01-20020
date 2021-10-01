@@ -1,9 +1,0 @@
-Matrix yang diinput: 
-6.0
-
-
-Matrix setelah diinverse:
-0.16666666666666666
-
-
-
