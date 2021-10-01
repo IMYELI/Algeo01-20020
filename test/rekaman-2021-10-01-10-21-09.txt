@@ -1,0 +1,16 @@
+Matrix yang diinput: 
+1.0 2.0
+3.0 4.0
+
+
+Matrix setelah diinverse:
+-2.0 1.0
+1.5 -0.5
+
+
+Matrix setelah diinverse:
+-1.9999999999999996 0.9999999999999999
+1.4999999999999998 -0.49999999999999994
+
+
+
