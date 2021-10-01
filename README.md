@@ -11,7 +11,7 @@ Repository ini berisi library yang dibuat dengan bahasa Java dan digunakan untuk
 - Interpolasi polinom
 - Regresi linier berganda
 
-repository terdiri dari folder bin yang menyimpan library, folder src yang menyimpan kode untuk library, test yang menyimpan file hasil eksekusi library, dan doc yang berisi laporan.
+repository terdiri dari folder bin yang menyimpan library, folder src yang menyimpan kode untuk library, test yang menyimpan contoh test case yang digunakan, Dump rekaman di dalam folder test yang digunakan untuk menyimpan hasil operasi, dan doc yang berisi laporan.
 
 FILE DIJALANKAN MELALUI CMD DENGAN COMMAND :
-java -jar --enable-preview Algeo01-20020.jar
+Execute java -jar --enable-preview Algeo01-20020.jar pada folder bin, jika file jar di execute tidak pada folder bin maka akan terjadi error.
