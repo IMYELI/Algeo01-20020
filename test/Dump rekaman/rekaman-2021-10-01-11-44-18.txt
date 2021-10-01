@@ -1,0 +1,7 @@
+Matrix yang diinput: 
+2.0
+3.0
+
+
+Cara yang dipilih tidak bisa menyelesaikan persamaan. Mencoba cara lain...
+
