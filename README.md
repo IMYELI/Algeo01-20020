@@ -14,4 +14,4 @@ Repository ini berisi library yang dibuat dengan bahasa Java dan digunakan untuk
 repository terdiri dari folder bin yang menyimpan library, folder src yang menyimpan kode untuk library, test yang menyimpan contoh test case yang digunakan, Dump rekaman di dalam folder test yang digunakan untuk menyimpan hasil operasi, dan doc yang berisi laporan.
 
 FILE DIJALANKAN MELALUI CMD DENGAN COMMAND :
-Execute java -jar --enable-preview Algeo01-20020.jar pada folder bin, jika file jar di execute tidak pada folder bin maka akan terjadi error.
+Execute java -jar --enable-preview Algeo01-20020.jar pada folder ../Algeo01-20020/bin, jika file jar di execute tidak pada folder bin maka akan terjadi error. Folder ../Algeo01-20020/test/Dump rekaman juga harus ada.
