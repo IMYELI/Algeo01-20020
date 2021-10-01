@@ -12,3 +12,6 @@ Repository ini berisi library yang dibuat dengan bahasa Java dan digunakan untuk
 - Regresi linier berganda
 
 repository terdiri dari folder bin yang menyimpan library, folder src yang menyimpan kode untuk library, test yang menyimpan file hasil eksekusi library, dan doc yang berisi laporan.
+
+FILE DIJALANKAN MELALUI CMD DENGAN COMMAND :
+java -jar --enable-preview Algeo01-20020.jar
