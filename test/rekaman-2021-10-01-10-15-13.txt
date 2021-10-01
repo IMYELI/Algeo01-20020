@@ -1,0 +1,8 @@
+Matrix yang diinput: 
+3.0
+
+
+Determinan dari matrix: 
+3.0
+
+
